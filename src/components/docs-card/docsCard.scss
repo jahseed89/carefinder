@@ -1,0 +1,34 @@
+.docs-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 345px;
+    height: 275px;
+    background-color: #E0E4EC;
+    border-radius: 12px;
+
+    span {
+        background-color: #08299B;
+        width: 70px;
+        height: 70px;
+        margin: 0 auto;
+        border-radius: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+
+
+        img {
+            width: fit-content;
+        }
+    }
+    h3 {
+        margin: 1rem 0;
+    }
+    p {
+        width: 70%;
+        margin: 0 auto;
+    }
+}

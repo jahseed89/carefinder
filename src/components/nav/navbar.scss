@@ -1,0 +1,39 @@
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem .5rem;
+    box-shadow: 0px 4px 4px rgba(14, 61, 183, 0.15);
+    background-color: #FFFFFF;
+
+    h1 {
+        color: #08299B;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 35px;
+        line-height: 150%;
+        letter-spacing: -0.011em;
+    }
+
+    ul {
+        width: 40%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        li {
+            list-style-type: none;
+            cursor: pointer;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 27px;
+            line-height: 150%;
+            letter-spacing: -0.011em;
+            color: #000000;
+        }
+
+        .nav-btn-holder {
+            display: flex;
+            gap: 20px;
+        }
+    }
+}
