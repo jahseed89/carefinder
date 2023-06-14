@@ -49,16 +49,12 @@
         }
     }
 
-    .findsearch {
+    form {
         width: 40%;
-        margin: 0 auto;
-        margin-top: 2rem;
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        padding-bottom: 3rem;
+        margin: 1rem auto;
+        // display: flex;
 
-        h3 {
+        .find-nearby {
             height: 58px;
             font-style: normal;
             font-weight: 500;
@@ -66,17 +62,63 @@
             line-height: 150%;
             letter-spacing: -0.011em;
             color: #08299B;
+            text-align: center;
         }
 
-        input {
-            width: 688px;
-            height: 64px;
-            background: #FFFFFF;
-            border-radius: 25px;
-            padding-left: .5rem;
+        .input-container {
+            display: flex;
 
-            &::placeholder {
+            input {
+                width: 688px;
+                height: 64px;
+                background: #FFFFFF;
+                border-radius: 25px;
                 padding-left: .5rem;
+    
+                &::placeholder {
+                    padding-left: .5rem;
+                }
+            }
+
+            .search-btn {
+                margin: auto .5rem;
+            }
+            
+        }
+
+       
+       
+    }
+
+    .brand-loading {
+        text-align: center;
+    }
+
+    .findsearch {
+        width: 40%;
+        height: 300px;
+        position: relative;
+        margin: 0 auto;
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        border: 2px dashed #08299B;
+        border-bottom: none;
+        overflow-y: scroll;
+        padding-top: .5rem;
+
+        .display-hospital {
+            position: relative;
+
+            h3 {
+                color: #08299B;
+                font-size: 26px;
+            }
+            p {
+                color: #FFFFFF;
+                font-size: 24px;
+                margin-bottom: 1rem;
             }
         }
         
@@ -108,14 +150,11 @@
 
             h1 {
                 width: 501px;
-                // height: 186px;
                 font-family: 'DM Sans';
                 font-style: normal;
                 font-weight: 500;
                 font-size: 45px;
-                // line-height: 150%;
                 text-align: center;
-                // letter-spacing: -0.011em;
                 color: #000000;
                 h1 {
                     color: #08299B;
@@ -150,4 +189,5 @@
         padding: 2rem 0;
         background-color: #FFFFFF;
     }
+ 
 }

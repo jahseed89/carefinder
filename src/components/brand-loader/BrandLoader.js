@@ -1,8 +1,9 @@
 import React from 'react'
+import './brandLoader.scss'
 
 const BrandLoader = () => {
   return (
-    <h2>Loading....please wait!</h2>
+    <h2 className='brand-loader'>Loading....please wait!</h2>
   )
 }
 
