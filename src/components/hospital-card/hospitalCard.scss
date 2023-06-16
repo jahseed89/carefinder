@@ -6,6 +6,11 @@
     background-color: #fff;
     padding: .8rem .5rem;
     cursor: pointer;
+    text-align: center;
+
+    @media (max-width: 900px) {
+        width: 370px;
+    }
 
     h1 {
         color: #08299B;

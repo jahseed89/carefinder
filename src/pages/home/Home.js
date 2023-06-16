@@ -13,20 +13,30 @@ import Navbar from "../../components/nav/Navbar";
 import Footer from "../../components/footer/Footer";
 import BrandLoader from "../../components/brand-loader/BrandLoader";
 import HospitalCard from "../../components/hospital-card/HospitalCard";
-import axios from "axios";
 import { GrSearch } from "react-icons/gr";
-import "./home.scss";
 import Input from "../../components/input/Input";
-
+import axios from "axios";
+import "./home.scss";
+import ReactPaginate from "react-paginate";
 
 const Home = () => {
   const [loading, setLoading] = useState(false);
   const [userData, setUserData] = useState([]);
   const [searchHospital, setSearchHospital] = useState("");
+
   const url = "https://api.reliancehmo.com/v3/providers";
 
-  const filteredData =  userData
-  .filter((value) => {
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      const resp = await axios.get(url);
+      setUserData(resp.data.data);
+      setLoading(false);
+    };
+    fetchData();
+  }, []);
+
+  const filteredData = userData.filter((value) => {
     if (searchHospital === "") {
       return value;
     } else if (
@@ -35,18 +45,25 @@ const Home = () => {
     ) {
       return value;
     }
-  })
+  });
 
-  useEffect(() => {
-    const fetchPost = async () => {
-      setLoading(true);
-      const resp = await axios.get(url);
-      setUserData(resp.data.data);
-      console.log(resp.data.data);
-      setLoading(false);
-    };
-    fetchPost();
-  }, []);
+  const [cardNumb, setCardNumb] = useState(0);
+
+  const cardPerPage = 4;
+
+  const cardVisited = cardNumb * cardPerPage;
+
+  const displayCard = filteredData.slice(
+    cardVisited,
+    cardVisited + cardPerPage
+  );
+
+  const cardCount = Math.ceil(userData.length / cardPerPage);
+
+  const ChangeCard = ({ selected }) => {
+    setCardNumb(selected);
+  };
+
   return (
     <div className="home">
       <Navbar />
@@ -81,26 +98,32 @@ const Home = () => {
       </form>
       {loading ? (
         <div className="brand-loading">
-          {" "}
           <BrandLoader />
         </div>
       ) : (
         <div className="findsearch">
-          {filteredData
-            .map((data) => {
-              return (
-                <div className="hosp-card-holder" >
-                  <HospitalCard
-                  key={data.id}
-                  name={data.name}
-                  address={data.address}
-                  location={data.state.name}
-                />
-                </div>
-              );
-            })}
+          {displayCard.map((data) => {
+            return (
+              <HospitalCard
+                key={data.id}
+                name={data.name}
+                address={data.address}
+                location={data.state.name}
+              />
+            );
+          })}
         </div>
       )}
+      <div className="pagination-container">
+        <ReactPaginate
+          prevPageRel={"Prev"}
+          nextLabel={"Next"}
+          pageCount={cardCount}
+          onPageChange={ChangeCard}
+          containerClassName={"pagination-btn"}
+          activeClassName={"paginate-active"}
+        />
+      </div>
       <div className="welcome-container">
         <div className="treatment-cont-wrapper">
           <div>
@@ -112,7 +135,7 @@ const Home = () => {
         </div>
         <div className="welcome-section">
           <h1 className="welcome">
-            Welcome to <h1>CareFinder</h1>
+            Welcome to <span>CareFinder</span>
           </h1>
           <p>
             Carefinder is a platform where users can search for hosiptals in

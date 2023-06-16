@@ -11,8 +11,20 @@
     font-style: normal;
     font-weight: 700;
     font-size: 22px;
-    line-height: 150%;
     letter-spacing: -0.011em;
+
+    @media (max-width: 1740px) {
+        border-radius: 12px;
+        // padding: 10px ;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 80%;
+        border-radius: 5px;
+    }
+
+    @media (max-width: 900px) {
+        font-size: 12px;
+    }
 
     span {
         padding-right: .5rem;

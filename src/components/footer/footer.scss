@@ -3,8 +3,18 @@
     justify-content: space-around;
     padding: 3rem 0;
 
-    div {
+    @media (max-width: 1000px) {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .footer-items {
         width: 500px;
+
+        @media (max-width: 1000px) {
+            text-align: justify;
+            padding: 0 2rem;
+        }
 
         h1 {
             color: #08299B;
@@ -16,3 +26,4 @@
         }
     }
 }
+

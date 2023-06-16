@@ -4,7 +4,6 @@ import google from "../../assets/google.svg";
 import apple from "../../assets/apple-cloud.svg";
 import facebook from "../../assets/facebook.svg";
 import loginTreat from "../../assets/login-treatment.png";
-import Validation from "../../Validation";
 import { useNavigate } from "react-router-dom";
 import { HOME_ROUTE } from "../../content-management/Landing";
 import { IoIosEyeOff } from "react-icons/io";
@@ -17,26 +16,26 @@ import "./login.scss";
 const Login = () => {
   const [changer, setChanger] = useState(false);
 
-  const [values, setValues] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
+//   const [values, setValues] = useState({
+//     name: "",
+//     email: "",
+//     password: "",
+//   });
 
-  const [errors, setErrors] = useState({});
+//   const [errors, setErrors] = useState({});
 
   const [passwordVisibility, setPasswordVisibility] = useState(true);
   const [openModal, setOpenModal] = useState(false)
 
-  const handleChange = (e) => {
-    const newObj = { ...values, [e.target.name]: e.target.value };
-    setValues(newObj);
-  };
+//   const handleChange = (e) => {
+//     const newObj = { ...values, [e.target.name]: e.target.value };
+//     setValues(newObj);
+//   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setErrors(Validation(values));
-  };
+//   const handleSubmit = (event) => {
+//     event.preventDefault();
+//     setErrors(Validation(values));
+//   };
 
   const successMsg = () => {
     toast.success('YOU HAVE SUCCESSFULLY LOGED IN')
@@ -78,7 +77,7 @@ const Login = () => {
       <div className="login">
         {changer ? (
           <div className="login-form-container form2">
-            <form onSubmit={handleSubmit}>
+            <form >
               <h1>Welcome Back</h1>
               <p>Login using correct details!</p>
               <div className="input-container">
@@ -88,7 +87,6 @@ const Login = () => {
                   <Input
                     type="text"
                     placeholder="Enter Name"
-                    onChange={handleChange}
                   />
                 </div>
                 {/* {errors.email && <p className="error-msg">{errors.name}</p>} */}
@@ -99,7 +97,6 @@ const Login = () => {
                   <Input
                     type="email"
                     placeholder="Enter Email Address"
-                    onChange={handleChange}
                   />
                 </div>
                 {/* {errors.email && <p className="error-msg">{errors.email}</p>} */}
@@ -111,7 +108,6 @@ const Login = () => {
                   <Input
                     type={passwordVisibility ? "password" : "text"}
                     placeholder="Enter Password"
-                    onChange={handleChange}
                   />
                   <span className="show-passN">
                     <IoIosEyeOff
@@ -150,7 +146,7 @@ const Login = () => {
           </div>
         ) : (
           <div className="login-form-container">
-            <form onSubmit={handleSubmit}>
+            <form>
               <h1>Welcome Back</h1>
               <p>Login using correct details!</p>
               <div className="input-container">
@@ -160,7 +156,6 @@ const Login = () => {
                   <Input
                     type="email"
                     placeholder="Enter Email Address"
-                    onChange={handleChange}
                   />
                 </div>
                 {/* {errors.email && <p className="error-msg">{errors.email}</p>} */}
@@ -171,7 +166,6 @@ const Login = () => {
                   <Input
                     type={passwordVisibility ? "password" : "text"}
                     placeholder="Enter Password"
-                    onChange={handleChange}
                   />
                   <span className="show-pass">
                     <IoIosEyeOff
