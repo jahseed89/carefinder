@@ -10,7 +10,11 @@
     cursor: pointer;
     font-style: normal;
     font-weight: 700;
-    font-size: 25px;
+    font-size: 22px;
     line-height: 150%;
     letter-spacing: -0.011em;
+
+    span {
+        padding-right: .5rem;
+    }
 }

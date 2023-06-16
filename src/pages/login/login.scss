@@ -1,6 +1,35 @@
+ // ********Modal Styling ***********
+ .acc-modal {
+    text-align: center;
+    h1 {
+        font-size: 40px;
+        padding: 1rem 0;
+    }
+
+    img {
+        margin: 5rem 0;
+    }
+
+    p {
+        height: 38px;
+        font-weight: 700;
+        font-size: 25px;
+        line-height: 150%;
+        letter-spacing: -0.011em;
+        color: #C1C1C1;
+    }
+}
+.b-btn {
+    margin-top: 5rem;
+    text-align: center;
+}
+
 .login {
+
     display: flex;
     justify-content: space-between;
+
+   
 
     h1,h2 {
         font-weight: 700;
@@ -17,6 +46,7 @@
         width: 50%;
         padding-top: 5rem;
 
+      
 
         form {
             width: 80%;
@@ -62,7 +92,7 @@
                 .show-passN {
                     position: absolute;
                     left: 42%;
-                    top: 59%;
+                    top: 54.5%;
                     cursor: pointer;
                 }
 
@@ -82,8 +112,25 @@
                         outline: none;
                         cursor: pointer;
                         font-style: normal;
-                        font-weight: 700;
-                        font-size: 25px;
+                        font-weight: 500;
+                        font-size: 22px;
+                        line-height: 150%;
+                        letter-spacing: -0.011em;
+                    }
+                    .create-btn {
+                        width: 70%;
+                        display: inline-block;
+                        text-align: center;
+                        background-color: #08299B;
+                        color: #ffff;
+                        border-radius: 12px;
+                        padding: 10px 20px;
+                        border: none;
+                        outline: none;
+                        cursor: pointer;
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 22px;
                         line-height: 150%;
                         letter-spacing: -0.011em;
                     }
@@ -111,7 +158,20 @@
                     cursor: pointer;
                 }
             }
+
+            .error-msg {
+                text-align: left;
+                font-style: italic;
+                color: red;
+                position: absolute;
+                font-size: 18px;
+                margin-top: -28px;
+            }
         }
+    }
+
+    .form2 {
+        padding-top: 3rem;
     }
 
 

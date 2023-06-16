@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import MyContext from "../../Context";
 import Button from "../../components/button/Button";
 import treatment from "../../assets/treatment.png";
 import { BsArrowRightShort } from "react-icons/bs";
@@ -13,15 +12,30 @@ import vector8 from "../../assets/vector8.svg";
 import Navbar from "../../components/nav/Navbar";
 import Footer from "../../components/footer/Footer";
 import BrandLoader from "../../components/brand-loader/BrandLoader";
+import HospitalCard from "../../components/hospital-card/HospitalCard";
 import axios from "axios";
+import { GrSearch } from "react-icons/gr";
 import "./home.scss";
-// import MyContext from "../../context";
+import Input from "../../components/input/Input";
+
 
 const Home = () => {
   const [loading, setLoading] = useState(false);
   const [userData, setUserData] = useState([]);
   const [searchHospital, setSearchHospital] = useState("");
   const url = "https://api.reliancehmo.com/v3/providers";
+
+  const filteredData =  userData
+  .filter((value) => {
+    if (searchHospital === "") {
+      return value;
+    } else if (
+      value.name.includes(searchHospital) ||
+      value.state.name.includes(searchHospital)
+    ) {
+      return value;
+    }
+  })
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -33,11 +47,6 @@ const Home = () => {
     };
     fetchPost();
   }, []);
-
-  // const [loading, userData] = useContext(MyContext);
-  // const [searchHospital, setSearchHospital] = useState("")
-
-
   return (
     <div className="home">
       <Navbar />
@@ -62,34 +71,34 @@ const Home = () => {
       <form>
         <h3 className="find-nearby">Find a nearby hospital</h3>
         <div className="input-container">
-          <input
+          <Input
             type="text"
             placeholder="Search Hospital by Name or State"
             onChange={(e) => setSearchHospital(e.target.value)}
           />
-          <div className="search-btn">
-            <Button btnText="Search" type="submit" />
-          </div>
+          <GrSearch className="search-icon" />
         </div>
       </form>
       {loading ? (
-       <div className="brand-loading"> <BrandLoader /></div>
+        <div className="brand-loading">
+          {" "}
+          <BrandLoader />
+        </div>
       ) : (
         <div className="findsearch">
-          {userData.filter((value) => {
-            if(searchHospital === "") {
-              return value
-            } else if(value.name.includes(searchHospital) || value.state.name.includes(searchHospital)) {
-              return value
-            }
-          }).map((data) => {
-            return (
-              <div key={data.id} className="display-hospital">
-                <h3>{data.name}</h3>
-                <p>{data.state.name}</p>
-              </div>
-            )
-          })}
+          {filteredData
+            .map((data) => {
+              return (
+                <div className="hosp-card-holder" >
+                  <HospitalCard
+                  key={data.id}
+                  name={data.name}
+                  address={data.address}
+                  location={data.state.name}
+                />
+                </div>
+              );
+            })}
         </div>
       )}
       <div className="welcome-container">

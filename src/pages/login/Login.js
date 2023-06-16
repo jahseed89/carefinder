@@ -4,38 +4,48 @@ import google from "../../assets/google.svg";
 import apple from "../../assets/apple-cloud.svg";
 import facebook from "../../assets/facebook.svg";
 import loginTreat from "../../assets/login-treatment.png";
-import "./login.scss";
 import Validation from "../../Validation";
 import { useNavigate } from "react-router-dom";
 import { HOME_ROUTE } from "../../content-management/Landing";
-import {IoIosEyeOff} from 'react-icons/io'
+import { IoIosEyeOff } from "react-icons/io";
 import Input from "../../components/input/Input";
+import { toast } from "react-hot-toast";
+import Modal from "../../components/modal/Modal";
+import checked from '../../assets/checked.png'
+import "./login.scss";
 
 const Login = () => {
   const [changer, setChanger] = useState(false);
 
   const [values, setValues] = useState({
+    name: "",
     email: "",
     password: "",
   });
 
   const [errors, setErrors] = useState({});
 
-  const [passwordVisibility, setPasswordVisibility] = useState(true)
+  const [passwordVisibility, setPasswordVisibility] = useState(true);
+  const [openModal, setOpenModal] = useState(false)
 
-  const handleChange = (event) => {
-    const newObj = { ...values, [event.target.name]: event.target.value };
+  const handleChange = (e) => {
+    const newObj = { ...values, [e.target.name]: e.target.value };
     setValues(newObj);
   };
 
   const handleSubmit = (event) => {
-    event.preventDefalt();
+    event.preventDefault();
     setErrors(Validation(values));
   };
+
+  const successMsg = () => {
+    toast.success('YOU HAVE SUCCESSFULLY LOGED IN')
+  }
 
   const navigate = useNavigate();
 
   const toHomePage = () => {
+    successMsg()
     navigate(`/${HOME_ROUTE}`);
   };
 
@@ -45,43 +55,80 @@ const Login = () => {
 
   const showSignin = () => {
     setChanger();
+  };
+
+  const approvalModal = () => {
+    setOpenModal(prev => !prev)
   }
+
+
 
   return (
     <>
-      {changer ? (
-        <div className="login">
-          <div className="login-form-container">
+    {openModal && (
+        <Modal closeModal={()=> setOpenModal()}>
+            <div className="acc-modal">
+                <h1>You Have Successfully Created an Account</h1>
+                <img src={checked} alt="checked" />
+                <p>Kindly check your email for details</p>
+            </div>
+            <div className="b-btn" ><Button btnText="Back to Home Page" clickHandler={toHomePage} backIcon={true} /></div>
+        </Modal>
+    )}
+      <div className="login">
+        {changer ? (
+          <div className="login-form-container form2">
             <form onSubmit={handleSubmit}>
               <h1>Welcome Back</h1>
               <p>Login using correct details!</p>
               <div className="input-container">
                 <div>
-                  <label>Email Name</label>
+                  <label>Enter Name</label>
                   <br />
-                  <Input type="text" placeholder="Enter Name" onChange={handleChange} />
-                  {errors.email && <p>{errors.email}</p>}
+                  <Input
+                    type="text"
+                    placeholder="Enter Name"
+                    onChange={handleChange}
+                  />
                 </div>
+                {/* {errors.email && <p className="error-msg">{errors.name}</p>} */}
+
                 <div>
                   <label>Email Address</label>
                   <br />
-                  <Input type="email" placeholder="Enter Email Address" onChange={handleChange} />
-                  {errors.email && <p>{errors.email}</p>}
+                  <Input
+                    type="email"
+                    placeholder="Enter Email Address"
+                    onChange={handleChange}
+                  />
                 </div>
+                {/* {errors.email && <p className="error-msg">{errors.email}</p>} */}
 
                 <div>
                   <label>Password</label>
                   <br />
-                 
-                  <Input type={passwordVisibility ? "password": "text"} placeholder="Enter Password" onChange={handleChange} />
-                  <span className="show-passN"><IoIosEyeOff onClick={()=> setPasswordVisibility((prev => !prev))} /></span>
-                  {errors.password && <p>{errors.password}</p>}
+
+                  <Input
+                    type={passwordVisibility ? "password" : "text"}
+                    placeholder="Enter Password"
+                    onChange={handleChange}
+                  />
+                  <span className="show-passN">
+                    <IoIosEyeOff
+                      onClick={() => setPasswordVisibility((prev) => !prev)}
+                    />
+                  </span>
                 </div>
+                {/* {errors.password && (
+                  <p className="error-msg">{errors.password}</p>
+                )} */}
+
                 <div className="login-btn-wrapper">
                   <Button
                     btnText="Create Account"
-                    className="login-btn"
+                    className="create-btn"
                     type="submit"
+                    clickHandler={approvalModal}
                     // clickHandler={toHomePage}
                   />
                 </div>
@@ -95,24 +142,13 @@ const Login = () => {
                   </div>
                 </div>
                 <p className="dont-hv-acc">
-                  Already have an account <span onClick={showSignin}>Login!</span>
+                  Already have an account{" "}
+                  <span onClick={showSignin}>Login!</span>
                 </p>
               </div>
-              <div></div>
             </form>
           </div>
-          <div className="login-treatment-container">
-            <div className="title-elements">
-              <h1>CareFinder</h1>
-              <h2>Join Our</h2>
-              <h2> Comunity</h2>
-              <p>Enjoy seamless access to medical services.</p>
-            </div>
-            <img src={loginTreat} alt="treatment" />
-          </div>
-        </div>
-      ) : (
-        <div className="login">
+        ) : (
           <div className="login-form-container">
             <form onSubmit={handleSubmit}>
               <h1>Welcome Back</h1>
@@ -121,21 +157,32 @@ const Login = () => {
                 <div>
                   <label>Email Address</label>
                   <br />
-                  <input
+                  <Input
                     type="email"
                     placeholder="Enter Email Address"
                     onChange={handleChange}
                   />
-                  {errors.email && <p>{errors.email}</p>}
                 </div>
+                {/* {errors.email && <p className="error-msg">{errors.email}</p>} */}
 
                 <div>
                   <label>Password</label>
                   <br />
-                  <Input type={passwordVisibility ? "password": "text"} placeholder="Enter Password" onChange={handleChange} />
-                  <span className="show-pass"><IoIosEyeOff  onClick={()=> setPasswordVisibility((prev => !prev))} /></span>
-                  {errors.password && <p>{errors.password}</p>}
+                  <Input
+                    type={passwordVisibility ? "password" : "text"}
+                    placeholder="Enter Password"
+                    onChange={handleChange}
+                  />
+                  <span className="show-pass">
+                    <IoIosEyeOff
+                      onClick={() => setPasswordVisibility((prev) => !prev)}
+                    />
+                  </span>
                 </div>
+                {/* {errors.password && (
+                  <p className="error-msg">{errors.password}</p>
+                )} */}
+
                 <div className="login-btn-wrapper">
                   <Button
                     btnText="Login"
@@ -158,20 +205,20 @@ const Login = () => {
                   <span onClick={showSignup}>Signup!</span>
                 </p>
               </div>
-              <div></div>
             </form>
           </div>
-          <div className="login-treatment-container">
-            <div className="title-elements">
-              <h1>CareFinder</h1>
-              <h2>Join Our</h2>
-              <h2> Comunity</h2>
-              <p>Enjoy seamless access to medical services.</p>
-            </div>
-            <img src={loginTreat} alt="treatment" />
+        )}
+
+        <div className="login-treatment-container">
+          <div className="title-elements">
+            <h1>CareFinder</h1>
+            <h2>Join Our</h2>
+            <h2> Comunity</h2>
+            <p>Enjoy seamless access to medical services.</p>
           </div>
+          <img src={loginTreat} alt="treatment" />
         </div>
-      )}
+      </div>
     </>
   );
 };

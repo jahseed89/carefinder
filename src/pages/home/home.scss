@@ -52,7 +52,6 @@
     form {
         width: 40%;
         margin: 1rem auto;
-        // display: flex;
 
         .find-nearby {
             height: 58px;
@@ -74,14 +73,19 @@
                 background: #FFFFFF;
                 border-radius: 25px;
                 padding-left: .5rem;
+                position: relative;
     
                 &::placeholder {
                     padding-left: .5rem;
                 }
             }
 
-            .search-btn {
-                margin: auto .5rem;
+            .search-icon {
+                margin-left: -2rem;
+                margin-top: 1rem;
+                z-index: 100;
+                font-size: 24px;
+                // position: absolute;
             }
             
         }
@@ -95,7 +99,7 @@
     }
 
     .findsearch {
-        width: 40%;
+        width: 50%;
         height: 300px;
         position: relative;
         margin: 0 auto;
@@ -103,25 +107,13 @@
         display: flex;
         flex-direction: column;
         text-align: center;
-        border: 2px dashed #08299B;
+        // border: 2px dashed #08299B;
         border-bottom: none;
         overflow-y: scroll;
         padding-top: .5rem;
-
-        .display-hospital {
-            position: relative;
-
-            h3 {
-                color: #08299B;
-                font-size: 26px;
-            }
-            p {
-                color: #FFFFFF;
-                font-size: 24px;
-                margin-bottom: 1rem;
-            }
-        }
-        
+        display: flex;
+        align-items: center;
+        gap: 1rem;
     }
 
     .welcome-container {
