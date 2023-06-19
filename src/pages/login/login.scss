@@ -1,13 +1,23 @@
  // ********Modal Styling ***********
  .acc-modal {
     text-align: center;
+
     h1 {
         font-size: 40px;
         padding: 1rem 0;
+
+        @media (max-width: 900px) {
+            font-size: 20px;
+        }
     }
 
     img {
         margin: 5rem 0;
+
+        @media (max-width: 900px) {
+            margin: 2rem 0;
+            width: 50%;
+        }
     }
 
     p {
@@ -17,6 +27,10 @@
         line-height: 150%;
         letter-spacing: -0.011em;
         color: #C1C1C1;
+
+        @media (max-width: 900px) {
+            font-size: 18px;
+        }
     }
 }
 .b-btn {
@@ -24,27 +38,40 @@
     text-align: center;
 }
 
+// **********Main section styling ***********
 .login {
 
     display: flex;
     justify-content: space-between;
 
-   
-
     h1,h2 {
         font-weight: 700;
         font-size: 45px;
-        line-height: 135%
+        line-height: 135%;
+       
+        @media (max-width: 900px) {
+            font-size: 20px;
+            font-weight: 400;
+        }
     }
 
     p {
         font-size: 24px;
+
+        @media (max-width: 900px) {
+            font-size: 16px;
+        }
     }
 
     .login-form-container {
         background-color: #E0E4EC;
         width: 50%;
         padding-top: 5rem;
+
+        @media (max-width: 900px) {
+            width: 100%;
+            padding-top: 1.5rem;
+        }
 
       
 
@@ -55,6 +82,12 @@
             display: flex;
             flex-direction: column;
             border-radius: 15px;
+
+            @media (max-width: 900px) {
+                width: 95%;
+                margin: 0 auto;
+                padding: 0 .5rem;
+            }
 
             h1,p {
                 text-align: center;
@@ -67,6 +100,10 @@
             .input-container {
                 width: 70%;
                 margin: .8rem auto;
+
+                @media (max-width: 900px) {
+                    width: 100%;
+                }
 
                 div {
                     margin: 1rem 0;
@@ -88,12 +125,23 @@
                     left: 42%;
                     top: 47%;
                     cursor: pointer;
+
+                    @media (max-width: 900px) {
+                        top: 99%;
+                        left: 87%;
+                    }
                 }
                 .show-passN {
                     position: absolute;
                     left: 42%;
                     top: 54.5%;
                     cursor: pointer;
+
+
+                    @media (max-width: 900px) {
+                        left: 87%;
+                        top: 115.5%;
+                    }
                 }
 
                 .login-btn-wrapper {
@@ -180,9 +228,32 @@
         background-image: url('../../assets/login-bgr.png');
         padding-top: 5rem;
 
+        @media (max-width: 900px) {
+            width: 100%;
+            padding-top: 0;
+
+        }
+
+        img {
+            width: 100%;
+        }
+
         .title-elements {
             width: 80%;
             text-align: center;
+
+            @media (max-width: 900px) {
+                width: 100%;
+            }
+
+            .community-headers {
+                @media (max-width: 900px) {
+                    display: flex;
+                    text-align: center;
+                    justify-content: center;
+                    gap: 10px;
+                }
+            }
 
             h1 {
                 margin: 1.5rem 0;
@@ -200,8 +271,13 @@
         }
 
 
-       
+    }
+}
 
 
+// *********** <Midea queries ****************
+@media (max-width: 900px) {
+    .login {
+        flex-direction: column-reverse;
     }
 }

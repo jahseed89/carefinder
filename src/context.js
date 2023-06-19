@@ -1,7 +1,7 @@
 import React from 'react'
 
-const MyContext = React.createContext({
+const UserDataContext = React.createContext({
     loading: false,
     userData: {}
 })
-export default MyContext
+export default UserDataContext

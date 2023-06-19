@@ -69,7 +69,7 @@
             text-align: center;
         }
 
-        .input-container {
+        .finder-input-container {
             display: flex;
 
             @media (max-width: 900px) {
@@ -90,6 +90,9 @@
     
                 &::placeholder {
                     padding-left: .5rem;
+                    @media (max-width: 900px) {
+                        font-size: 14px;
+                    }
                 }
             }
 
@@ -98,11 +101,6 @@
                 margin-top: 1rem;
                 z-index: 100;
                 font-size: 24px;
-                // position: absolute;
-
-                @media (max-width: 900px) {
-                    
-                }
             }
             
         }

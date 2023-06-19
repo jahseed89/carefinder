@@ -8,16 +8,13 @@ import {
 
 } from "../content-management/Landing";
 import PageNotFound from "../pages/page-not-found/PageNotFound";
-import MyContext from "../context";
+import UserDataContext from "../context";
 import axios from "axios";
-
-
 const LandingLayout = lazy(() => import("../layout/LandingLayout"));
 const Home = lazy(() => import("../pages/home/Home"));
 const About = lazy(() => import("../pages/about/About"));
 const Finder = lazy(() => import("../pages/finder/Finder"));
 const Login = lazy(() => import("../pages/login/Login"));
-
 
 
 const LandingRoute = () => {
@@ -37,7 +34,7 @@ const LandingRoute = () => {
   }, [])
 
   return (
-    <MyContext.Provider value={{ loading, userData }}>
+    <UserDataContext.Provider value={{ loading, userData }}>
       <Routes>
         <Route element={<LandingLayout />}>
           <Route index element={<Navigate to="home" />} />
@@ -49,7 +46,7 @@ const LandingRoute = () => {
         </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
-    </MyContext.Provider>
+    </UserDataContext.Provider>
   );
 };
 
