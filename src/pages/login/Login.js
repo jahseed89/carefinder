@@ -60,6 +60,10 @@ const Login = () => {
     setOpenModal(prev => !prev)
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+  }
+
 
 
   return (
@@ -77,7 +81,7 @@ const Login = () => {
       <div className="login">
         {changer ? (
           <div className="login-form-container form2">
-            <form >
+            <form onSubmit={handleSubmit} >
               <h1>Welcome Back</h1>
               <p>Login using correct details!</p>
               <div className="input-container">
@@ -146,7 +150,7 @@ const Login = () => {
           </div>
         ) : (
           <div className="login-form-container">
-            <form>
+            <form onSubmit={handleSubmit}>
               <h1>Welcome Back</h1>
               <p>Login using correct details!</p>
               <div className="input-container">

@@ -20,3 +20,17 @@
      padding: 2rem 0;
     }
 }
+
+// ********* @Media screen ************
+
+@media (max-width: 900px) {
+    .hosp-card {
+        width: 100%;
+        height: 100%;
+
+        p {
+            font-size: 16px;
+        }
+    }
+
+}

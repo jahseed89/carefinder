@@ -1,6 +1,7 @@
 .my-btn {
-    display: inline-block;
     text-align: center;
+    display: flex;
+    align-items: center;
     background-color: #08299B;
     color: #ffff;
     border-radius: 12px;
@@ -15,7 +16,6 @@
 
     @media (max-width: 1740px) {
         border-radius: 12px;
-        // padding: 10px ;
         font-weight: 500;
         font-size: 18px;
         line-height: 80%;
