@@ -40,8 +40,8 @@ const Home = () => {
     if (searchHospital === "") {
       return value;
     } else if (
-      value.name.toLowerCase().includes(searchHospital) ||
-      value.state.name.toLowerCase().includes(searchHospital)
+      value.name.includes(searchHospital) ||
+      value.state.name.includes(searchHospital)
     ) {
       return value;
     }
