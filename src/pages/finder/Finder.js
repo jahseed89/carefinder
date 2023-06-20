@@ -7,6 +7,7 @@ import doc3 from "../../assets/ellipse3.png";
 import doc4 from "../../assets/ellipse4.png";
 import Navbar from "../../components/nav/Navbar";
 import "./finder.scss";
+import Input from "../../components/input/Input";
 
 
 const Finder = () => {
@@ -48,13 +49,13 @@ const Finder = () => {
         </div>
         <div className="booking-container">
           <Button btnText="Book An Appointment" className="booking-btn" />
-          <input type="text" placeholder="Address" />
-          <input type="text" placeholder="Hospital" />
-          <input type="text" placeholder="Treatment" />
-          <input type="text" placeholder="Doctor" />
-          <input type="text" placeholder="Email" />
-          <input type="date" />
-          <input type="time" />
+          <Input type="text" placeholder="Address" />
+          <Input type="text" placeholder="Hospital" />
+          <Input type="text" placeholder="Treatment" />
+          <Input type="text" placeholder="Doctor" />
+          <Input type="text" placeholder="Email" />
+          <Input type="date" />
+          <Input type="time" />
 
           <Button btnText="Book Appointment Now" className="booking-btn" />
         </div>
