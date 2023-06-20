@@ -10,22 +10,22 @@ import { IoIosEyeOff } from "react-icons/io";
 import Input from "../../components/input/Input";
 import { toast } from "react-hot-toast";
 import Modal from "../../components/modal/Modal";
-import checked from '../../assets/checked.png'
+import checked from "../../assets/checked.png";
 import "./login.scss";
 
 const Login = () => {
   const [changer, setChanger] = useState(false);
   const [passwordVisibility, setPasswordVisibility] = useState(true);
-  const [openModal, setOpenModal] = useState(false)
+  const [openModal, setOpenModal] = useState(false);
 
   const successMsg = () => {
-    toast.success('YOU HAVE SUCCESSFULLY LOGED IN')
-  }
+    toast.success("YOU HAVE SUCCESSFULLY LOGED IN");
+  };
 
   const navigate = useNavigate();
 
   const toHomePage = () => {
-    successMsg()
+    successMsg();
     navigate(`/${HOME_ROUTE}`);
   };
 
@@ -38,51 +38,49 @@ const Login = () => {
   };
 
   const approvalModal = () => {
-    setOpenModal(prev => !prev)
-  }
+    setOpenModal((prev) => !prev);
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-  }
-
-
+    e.preventDefault();
+  };
 
   return (
     <>
-    {openModal && (
-        <Modal closeModal={()=> setOpenModal()}>
-            <div className="acc-modal">
-                <h1>You Have Successfully Created an Account</h1>
-                <img src={checked} alt="checked" />
-                <p>Kindly check your email for details</p>
-            </div>
-            <div className="b-btn" ><Button btnText="Back to Home Page" clickHandler={toHomePage} backIcon={true} /></div>
+      {openModal && (
+        <Modal closeModal={() => setOpenModal()}>
+          <div className="acc-modal">
+            <h1>You Have Successfully Created an Account</h1>
+            <img src={checked} alt="checked" />
+            <p>Kindly check your email for details</p>
+          </div>
+          <div className="b-btn">
+            <Button
+              btnText="Back to Home Page"
+              clickHandler={toHomePage}
+              backIcon={true}
+            />
+          </div>
         </Modal>
-    )}
+      )}
       <div className="login">
         {changer ? (
           <div className="login-form-container form2">
-            <form onSubmit={handleSubmit} >
+            <form onSubmit={handleSubmit}>
               <h1>Welcome Back</h1>
               <p>Login using correct details!</p>
               <div className="input-container">
                 <div>
                   <label>Enter Name</label>
                   <br />
-                  <Input
-                    type="text"
-                    placeholder="Enter Name"
-                  />
+                  <Input type="text" placeholder="Enter Name" />
                 </div>
                 {/* {errors.email && <p className="error-msg">{errors.name}</p>} */}
 
                 <div>
                   <label>Email Address</label>
                   <br />
-                  <Input
-                    type="email"
-                    placeholder="Enter Email Address"
-                  />
+                  <Input type="email" placeholder="Enter Email Address" />
                 </div>
                 {/* {errors.email && <p className="error-msg">{errors.email}</p>} */}
 
@@ -138,10 +136,7 @@ const Login = () => {
                 <div>
                   <label>Email Address</label>
                   <br />
-                  <Input
-                    type="email"
-                    placeholder="Enter Email Address"
-                  />
+                  <Input type="email" placeholder="Enter Email Address" />
                 </div>
                 {/* {errors.email && <p className="error-msg">{errors.email}</p>} */}
 
@@ -191,8 +186,10 @@ const Login = () => {
         <div className="login-treatment-container">
           <div className="title-elements">
             <h1>CareFinder</h1>
-            <h2>Join Our</h2>
-            <h2> Comunity</h2>
+            <div>
+              <h2>Join Our</h2>
+              <h2> Comunity</h2>
+            </div>
             <p>Enjoy seamless access to medical services.</p>
           </div>
           <img src={loginTreat} alt="treatment" />
