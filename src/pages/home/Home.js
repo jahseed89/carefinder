@@ -40,11 +40,12 @@ const Home = () => {
     if (searchHospital === "") {
       return value;
     } else if (
-      value.name.includes(searchHospital) ||
-      value.state.name.includes(searchHospital)
+      value.name.toLowerCase().includes(searchHospital) ||
+      value.state.name.toLowerCase().includes(searchHospital)
     ) {
       return value;
     }
+    return false
   });
 
   const [cardNumb, setCardNumb] = useState(0);
@@ -58,7 +59,7 @@ const Home = () => {
     cardVisited + cardPerPage
   );
 
-  const cardCount = Math.ceil(userData.length / cardPerPage);
+  const cardCount = Math.ceil(filteredData.length / cardPerPage);
 
   const ChangeCard = ({ selected }) => {
     setCardNumb(selected);
@@ -87,7 +88,7 @@ const Home = () => {
 
       <form>
         <h3 className="find-nearby">Find a nearby hospital</h3>
-        <div className="input-container">
+        <div className="finder-input-container">
           <Input
             type="text"
             placeholder="Search Hospital by Name or State"

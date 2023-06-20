@@ -15,27 +15,8 @@ import "./login.scss";
 
 const Login = () => {
   const [changer, setChanger] = useState(false);
-
-//   const [values, setValues] = useState({
-//     name: "",
-//     email: "",
-//     password: "",
-//   });
-
-//   const [errors, setErrors] = useState({});
-
   const [passwordVisibility, setPasswordVisibility] = useState(true);
   const [openModal, setOpenModal] = useState(false)
-
-//   const handleChange = (e) => {
-//     const newObj = { ...values, [e.target.name]: e.target.value };
-//     setValues(newObj);
-//   };
-
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-//     setErrors(Validation(values));
-//   };
 
   const successMsg = () => {
     toast.success('YOU HAVE SUCCESSFULLY LOGED IN')
