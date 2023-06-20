@@ -8,6 +8,12 @@
     cursor: pointer;
     text-align: center;
     margin: 0 auto;
+    text-decoration: none;
+
+    &:hover {
+        // box-shadow: 6px 6px 0 rgba(0, 0, 0, 1);
+        box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
+    }
 
     @media (max-width: 900px) {
         width: 370px;
@@ -20,6 +26,10 @@
     p {
      padding: 2rem 0;
      font-size: medium;
+     color: #000000;
+    }
+    h3 {
+        color: #000000;
     }
 }
 

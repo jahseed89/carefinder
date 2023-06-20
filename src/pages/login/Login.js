@@ -6,11 +6,11 @@ import facebook from "../../assets/facebook.svg";
 import loginTreat from "../../assets/login-treatment.png";
 import { useNavigate } from "react-router-dom";
 import { HOME_ROUTE } from "../../content-management/Landing";
-import { IoIosEyeOff } from "react-icons/io";
 import Input from "../../components/input/Input";
 import { toast } from "react-hot-toast";
 import Modal from "../../components/modal/Modal";
 import checked from "../../assets/checked.png";
+import {IoIosEyeOff} from 'react-icons/io'
 import "./login.scss";
 
 const Login = () => {
@@ -91,12 +91,9 @@ const Login = () => {
                   <Input
                     type={passwordVisibility ? "password" : "text"}
                     placeholder="Enter Password"
+                    className="create-pass-input"
                   />
-                  <span className="show-passN">
-                    <IoIosEyeOff
-                      onClick={() => setPasswordVisibility((prev) => !prev)}
-                    />
-                  </span>
+                  <IoIosEyeOff className="pass-viewIcon" onClick={()=> setPasswordVisibility(prev => !prev)} />
                 </div>
                 {/* {errors.password && (
                   <p className="error-msg">{errors.password}</p>
@@ -108,7 +105,6 @@ const Login = () => {
                     className="create-btn"
                     type="submit"
                     clickHandler={approvalModal}
-                    // clickHandler={toHomePage}
                   />
                 </div>
                 <div className="other-login">
@@ -146,12 +142,9 @@ const Login = () => {
                   <Input
                     type={passwordVisibility ? "password" : "text"}
                     placeholder="Enter Password"
+                    passwordIcon={true}
+                    passwordIconHandler={()=> setPasswordVisibility(prev => !prev)}
                   />
-                  <span className="show-pass">
-                    <IoIosEyeOff
-                      onClick={() => setPasswordVisibility((prev) => !prev)}
-                    />
-                  </span>
                 </div>
                 {/* {errors.password && (
                   <p className="error-msg">{errors.password}</p>

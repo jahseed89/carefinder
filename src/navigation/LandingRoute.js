@@ -8,7 +8,7 @@ import {
 
 } from "../content-management/Landing";
 import PageNotFound from "../pages/page-not-found/PageNotFound";
-import MyContext from "../context";
+import UserDataContext from "../context";
 import axios from "axios";
 
 
@@ -37,7 +37,7 @@ const LandingRoute = () => {
   }, [])
 
   return (
-    <MyContext.Provider value={{ loading, userData }}>
+    <UserDataContext.Provider value={{ loading, userData }}>
       <Routes>
         <Route element={<LandingLayout />}>
           <Route index element={<Navigate to="home" />} />
@@ -49,7 +49,7 @@ const LandingRoute = () => {
         </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
-    </MyContext.Provider>
+    </UserDataContext.Provider>
   );
 };
 

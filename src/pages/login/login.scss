@@ -111,7 +111,27 @@
 
                 div {
                     margin: 1rem 0;
+                    
+                    input {
+                        position: relative;
+                    }
+
+                    .pass-viewIcon {
+                        // margin-bottom: 7rem;
+                        position: absolute;
+                        bottom: 19.3rem;
+                        left: 38rem;
+                        cursor: pointer;
+
+                        @media (max-width: 900px) {
+                            bottom: 0;
+                            top: 54.8rem;
+                            left: 18rem;
+                        }
+                    }
                 }
+
+ 
 
                 input {
                     width: 100%;
@@ -122,30 +142,6 @@
                     padding: 0 .5rem;
                     border: none;
                     position: relative;
-                }
-
-                .show-pass {
-                    position: absolute;
-                    left: 42%;
-                    top: 47%;
-                    cursor: pointer;
-
-                    @media (max-width: 900px) {
-                        top: 45rem;
-                        left: 87%;
-                    }
-                }
-                .show-passN {
-                    position: absolute;
-                    left: 42%;
-                    top: 54.5%;
-                    cursor: pointer;
-
-
-                    @media (max-width: 900px) {
-                        left: 87%;
-                        top: 52.5rem;
-                    }
                 }
 
                 .login-btn-wrapper {

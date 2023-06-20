@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import Button from "../../components/button/Button";
 import treatment from "../../assets/treatment.png";
 import { BsArrowRightShort } from "react-icons/bs";
@@ -15,26 +15,15 @@ import BrandLoader from "../../components/brand-loader/BrandLoader";
 import HospitalCard from "../../components/hospital-card/HospitalCard";
 import { GrSearch } from "react-icons/gr";
 import Input from "../../components/input/Input";
-import axios from "axios";
-import "./home.scss";
 import ReactPaginate from "react-paginate";
+import UserDataContext from "../../context";
+import "./home.scss";
+
 
 const Home = () => {
-  const [loading, setLoading] = useState(false);
-  const [userData, setUserData] = useState([]);
   const [searchHospital, setSearchHospital] = useState("");
 
-  const url = "https://api.reliancehmo.com/v3/providers";
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      const resp = await axios.get(url);
-      setUserData(resp.data.data);
-      setLoading(false);
-    };
-    fetchData();
-  }, []);
+  const {loading, userData} = useContext(UserDataContext)
 
   const filteredData = userData.filter((value) => {
     if (searchHospital === "") {
