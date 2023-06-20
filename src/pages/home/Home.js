@@ -117,8 +117,8 @@ const Home = () => {
       )}
       <div className="pagination-container">
         <ReactPaginate
-          prevPageRel={"Prev"}
-          nextLabel={"Next"}
+          previousLabel={"<"}
+          nextLabel={">"}
           pageCount={cardCount}
           onPageChange={ChangeCard}
           containerClassName={"pagination-btn"}
