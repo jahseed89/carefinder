@@ -5,9 +5,9 @@ import doc1 from "../../assets/ellipse1.png";
 import doc2 from "../../assets/ellipse2.png";
 import doc3 from "../../assets/ellipse3.png";
 import doc4 from "../../assets/ellipse4.png";
-
-import "./finder.scss";
 import Navbar from "../../components/nav/Navbar";
+import "./finder.scss";
+
 
 const Finder = () => {
   return (
