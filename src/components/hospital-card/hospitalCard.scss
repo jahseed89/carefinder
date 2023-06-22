@@ -11,12 +11,11 @@
     text-decoration: none;
 
     &:hover {
-        // box-shadow: 6px 6px 0 rgba(0, 0, 0, 1);
         box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
     }
 
     @media (max-width: 900px) {
-        width: 370px;
+        max-width: 370px;
     }
 
     h1 {

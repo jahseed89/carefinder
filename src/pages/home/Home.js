@@ -16,16 +16,16 @@ import HospitalCard from "../../components/hospital-card/HospitalCard";
 import { GrSearch } from "react-icons/gr";
 import Input from "../../components/input/Input";
 import ReactPaginate from "react-paginate";
-import UserDataContext from "../../context";
+import HospitalDataContext from "../../context";
 import "./home.scss";
-
 
 const Home = () => {
   const [searchHospital, setSearchHospital] = useState("");
+  const { loading, hospitals } = useContext(HospitalDataContext);
 
-  const {loading, userData} = useContext(UserDataContext)
+  const loadHospital = hospitals || [];
 
-  const filteredData = userData.filter((value) => {
+  const filterHospitals = loadHospital.filter((value) => {
     if (searchHospital === "") {
       return value;
     } else if (
@@ -34,25 +34,24 @@ const Home = () => {
     ) {
       return value;
     }
-    return false
+    return false;
   });
 
-
-  const [cardNumb, setCardNumb] = useState(0);
+  const [cardNumb, setHospCardNumb] = useState(0);
 
   const cardPerPage = 4;
 
   const cardVisited = cardNumb * cardPerPage;
 
-  const displayCard = filteredData.slice(
+  const hospitalList = filterHospitals.slice(
     cardVisited,
     cardVisited + cardPerPage
   );
 
-  const cardCount = Math.ceil(filteredData.length / cardPerPage);
+  const hospCardCount = Math.ceil(filterHospitals.length / cardPerPage);
 
-  const ChangeCard = ({ selected }) => {
-    setCardNumb(selected);
+  const changeHospCard = ({ selected }) => {
+    setHospCardNumb(selected);
   };
 
   return (
@@ -82,6 +81,7 @@ const Home = () => {
           <Input
             type="text"
             placeholder="Search Hospital by Name or State"
+            value={searchHospital}
             onChange={(e) => setSearchHospital(e.target.value)}
           />
           <GrSearch className="search-icon" />
@@ -93,7 +93,8 @@ const Home = () => {
         </div>
       ) : (
         <div className="findsearch">
-          {displayCard.map((data) => {
+          {hospitalList.map((data) => {
+            console.log(data, "data not showing");
             return (
               <HospitalCard
                 key={data.id}
@@ -109,8 +110,8 @@ const Home = () => {
         <ReactPaginate
           previousLabel={"<<"}
           nextLabel={">>"}
-          pageCount={cardCount}
-          onPageChange={ChangeCard}
+          pageCount={hospCardCount}
+          onPageChange={changeHospCard}
           containerClassName={"pagination-btn"}
           activeClassName={"paginate-active"}
         />

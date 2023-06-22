@@ -7,7 +7,6 @@ import loginTreat from "../../assets/login-treatment.png";
 import { useNavigate } from "react-router-dom";
 import { LOGIN_ROUTE } from "../../content-management/Landing";
 import Input from "../../components/input/Input";
-import { toast } from "react-hot-toast";
 import Modal from "../../components/modal/Modal";
 import checked from "../../assets/checked.png";
 import { IoIosEyeOff } from "react-icons/io";
@@ -23,14 +22,9 @@ const SignUp = () => {
   const [password, setPassword] = useState();
   const [toggleLog, setToggleLog] = useState(true)
 
-  const successMsg = () => {
-    toast.success("YOU HAVE SUCCESSFULLY LOGED IN");
-  };
-
   const navigate = useNavigate();
 
   const toSigninPage = () => {
-    successMsg();
     setOpenModal()
     navigate(`/${LOGIN_ROUTE}`);
   };
@@ -38,12 +32,14 @@ const SignUp = () => {
 
   const approvalModal = () => {
     setOpenModal((prev) => !prev);
+    setToggleLog(false)
   };
 
   const handleSubmitSignup = (e) => {
     e.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
+      approvalModal()
       console.log(userCredential);
     })
     .catch((error) => {
@@ -115,7 +111,6 @@ const SignUp = () => {
                    btnText="Create Account"
                    className="create-btn"
                    type="submit"
-                   clickHandler={approvalModal}
                  />
                </div>
                <div className="other-login">

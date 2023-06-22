@@ -9,11 +9,11 @@
     }
 
     .qualified-docs-container {
-        width: 50%;
+        min-width: 50%;
         margin-top: 3rem;
 
         @media (max-width: 900px) {
-            width: 100%;
+            min-width: 100%;
             margin-top: 0;
         }
 
@@ -54,13 +54,13 @@
     }
 
     .booking-container {
-        width: 40%;
+        min-width: 40%;
         margin-top: 3rem;
         display: flex;
         flex-direction: column;
 
         @media (max-width: 900px) {
-            width: 100%;
+            max-width: 100%;
         }
 
         input {
@@ -73,7 +73,7 @@
             padding-left: .5rem;
 
             @media (max-width: 900px) {
-                width: 90%;
+                max-width: 90%;
                 margin: 1rem auto;
             }
         }
@@ -92,9 +92,11 @@
             cursor: pointer;
 
             @media (max-width: 900px) {
-                width: 90%;
+                max-width: 90%;
                 margin: 0 auto;
-                font: 18px;
+                font-size: 14px;
+                padding: 20px;
+                display: inline-block;
             }
         }
     }

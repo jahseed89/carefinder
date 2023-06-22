@@ -125,8 +125,14 @@
 
                         @media (max-width: 900px) {
                             bottom: 0;
-                            top: 54.8rem;
-                            left: 18rem;
+                            top: 65.8rem;
+                            left: 37.5rem;
+                        }
+
+                        @media (max-width: 500px) {
+                            bottom: 0;
+                            top: 52.3rem;
+                            left: 17.5rem;
                         }
                     }
                 }
@@ -205,15 +211,6 @@
                     color: #08299B;
                     cursor: pointer;
                 }
-            }
-
-            .error-msg {
-                text-align: left;
-                font-style: italic;
-                color: red;
-                position: absolute;
-                font-size: 18px;
-                margin-top: -28px;
             }
         }
     }

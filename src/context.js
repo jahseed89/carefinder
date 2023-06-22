@@ -1,7 +1,9 @@
 import React from 'react'
 
-const UserDataContext = React.createContext({
+const HospitalDataContext = React.createContext({
     loading: false,
-    userData: {}
+    hospitals: {},
+    isAuthenticated: false,
+    setIsAuthenticated: null
 })
-export default UserDataContext
+export default HospitalDataContext

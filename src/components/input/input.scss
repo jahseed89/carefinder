@@ -1,15 +1,25 @@
 .input {
     position: relative;
+    display: block;
 }
 .password-icon {
     position: absolute;
-    bottom: 24.2rem;
+    display: inline-block;
+    top: 24.5rem;
     left: 38rem;
     cursor: pointer;
 
     @media (max-width: 900px) {
-        bottom: 0;
-        top: 46rem;
+        // bottom: 0;
+        top: 50.3rem;
+        left: 35rem;
+        
+    }
+
+    @media (max-width: 500px) {
+        // bottom: 0;
+        top: 44.6rem;
         left: 18rem;
+        
     }
 }

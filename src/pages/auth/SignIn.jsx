@@ -7,10 +7,10 @@ import loginTreat from "../../assets/login-treatment.png";
 import { useNavigate } from "react-router-dom";
 import { HOME_ROUTE } from "../../content-management/Landing";
 import Input from "../../components/input/Input";
-import { toast } from "react-hot-toast";
 import SignUp from "./SignUp";
 import { auth } from '../../firebase';
 import { signInWithEmailAndPassword } from "firebase/auth";
+import toast from "react-hot-toast";
 import "./login.scss";
 
 const SignIn = () => {
@@ -19,23 +19,27 @@ const SignIn = () => {
   const [password, setPassword] = useState()
   const [toggleLog, setToggleLog] = useState(true)
 
-  const successMsg = () => {
-    toast.success("YOU HAVE SUCCESSFULLY LOGED IN");
-  };
 
   const navigate = useNavigate();
 
   const toHomePage = () => {
-    successMsg();
     navigate(`/${HOME_ROUTE}`);
   };
 
+  const loginMsg = () => {
+    toast.success("Login with a correct detials OR Signup")
+  }
 
   const handleSubmitSignin = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       console.log(userCredential);
+      if(!userCredential) {
+        loginMsg()
+      } else {
+        toHomePage()
+      }
     })
     .catch((error) => {
       console.log(error)
@@ -74,7 +78,7 @@ const SignIn = () => {
                  btnText="Login"
                  className="login-btn"
                  type="submit"
-                 clickHandler={toHomePage}
+                //  clickHandler={toHomePage}
                />
              </div>
              <div className="other-login">
