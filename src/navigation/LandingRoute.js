@@ -11,12 +11,11 @@ import PageNotFound from "../pages/page-not-found/PageNotFound";
 import UserDataContext from "../context";
 import axios from "axios";
 
-
 const LandingLayout = lazy(() => import("../layout/LandingLayout"));
 const Home = lazy(() => import("../pages/home/Home"));
 const About = lazy(() => import("../pages/about/About"));
 const Finder = lazy(() => import("../pages/finder/Finder"));
-const Login = lazy(() => import("../pages/login/Login"));
+const SignIn = lazy(() => import("../pages/auth/SignIn"));
 
 
 
@@ -44,7 +43,7 @@ const LandingRoute = () => {
           <Route path={HOME_ROUTE} element={<Home />} />
           <Route path={ABOUT_ROUTE} element={<About />} />
           <Route path={FINDER_ROUTE} element={<Finder />} />
-          <Route path={LOGIN_ROUTE} element={<Login />} />
+          <Route path={LOGIN_ROUTE} element={<SignIn />} />
 
         </Route>
         <Route path="*" element={<PageNotFound />} />

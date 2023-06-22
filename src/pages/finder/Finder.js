@@ -20,13 +20,13 @@ const Finder = () => {
 
           <div className="docs-container fistCont">
             <DocsAvatar
-              name="Dr Cole Ben"
+              name="Dr Stephen"
               avata={doc1}
               possition="Pediatritian"
               hospital="Federal Hospital"
             />
             <DocsAvatar
-              name="Dr Yemi"
+              name="Dr Victoria"
               avata={doc3}
               possition="Pediatritian"
               hospital="General Hospital"
@@ -34,13 +34,13 @@ const Finder = () => {
           </div>
           <div className="docs-container">
             <DocsAvatar
-              name="Dr Emmanuela"
+              name="Dr Zoe"
               avata={doc4}
               possition="Pediatritian"
               hospital="Eva Care Hospital"
             />
             <DocsAvatar
-              name="Dr Felix Bill"
+              name="Dr Micaiah"
               avata={doc2}
               possition="Pediatritian"
               hospital="Lagos State Health Clinic"
