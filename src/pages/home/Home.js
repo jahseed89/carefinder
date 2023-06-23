@@ -18,6 +18,7 @@ import Input from "../../components/input/Input";
 import ReactPaginate from "react-paginate";
 import HospitalDataContext from "../../context";
 import "./home.scss";
+import { toast } from "react-hot-toast";
 
 const Home = () => {
   const [searchHospital, setSearchHospital] = useState("");
@@ -53,6 +54,11 @@ const Home = () => {
     setHospCardNumb(selected);
   };
 
+  const successMsg = () => {
+    toast.success('Welcome to home Page')
+  }
+  
+
   return (
     <div className="home">
       <Navbar />
@@ -63,7 +69,7 @@ const Home = () => {
             Discover Your Perfect Care: Find Your Hospital, Anytime, Anywhere!
           </p>
           <div className="get-start-container">
-            <Button btnText="GET STARTED" />
+            <Button btnText="GET STARTED" clickHandler={successMsg} />
             <span>
               Learn more <BsArrowRightShort />
             </span>
@@ -94,12 +100,13 @@ const Home = () => {
         <div className="findsearch">
           {hospitalList.map((data) => {
             return (
-              <HospitalCard
-                key={data.id}
+             <div key={data.id} className="hosp-card-wrapper">
+               <HospitalCard
                 name={data.name}
                 address={data.address}
                 location={data.state.name}
               />
+             </div>
             );
           })}
         </div>

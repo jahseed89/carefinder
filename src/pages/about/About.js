@@ -32,7 +32,8 @@ const About = () => {
         <h1>Open Days & Time</h1>
         <p>
           he Somkenechukwu Hospital and maternity is open on
-          Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday , and
+          Monday,Tuesday,Wednesday,Thursday,
+          Saturday,Sunday , and Friday,
           operates on 24hrs basis
         </p>
       </div>

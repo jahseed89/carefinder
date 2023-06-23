@@ -5,7 +5,7 @@ import apple from "../../assets/apple-cloud.svg";
 import facebook from "../../assets/facebook.svg";
 import loginTreat from "../../assets/login-treatment.png";
 import { useNavigate } from "react-router-dom";
-import { LOGIN_ROUTE } from "../../content-management/Landing";
+import { HOME_ROUTE } from "../../content-management/Landing";
 import Input from "../../components/input/Input";
 import Modal from "../../components/modal/Modal";
 import checked from "../../assets/checked.png";
@@ -14,6 +14,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import SignIn from "./SignIn";
 import "./login.scss";
+import { toast } from "react-hot-toast";
 
 const SignUp = () => {
   const [passwordVisibility, setPasswordVisibility] = useState(true);
@@ -24,23 +25,27 @@ const SignUp = () => {
 
   const navigate = useNavigate();
 
-  const toSigninPage = () => {
+  const toHomePage = () => {
     setOpenModal()
-    navigate(`/${LOGIN_ROUTE}`);
+    navigate(`/${HOME_ROUTE}`);
   };
 
 
-  const approvalModal = () => {
-    setOpenModal((prev) => !prev);
-    setToggleLog(false)
-  };
+  // const approvalModal = () => {
+  //   setOpenModal((prev) => !prev);
+  //   setToggleLog(false)
+  // };
+  const accCreateMsg = () => {
+    toast.success('you have successfully created an acc')
+  }
 
   const handleSubmitSignup = (e) => {
     e.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      approvalModal()
       console.log(userCredential);
+      accCreateMsg()
+      toHomePage()
     })
     .catch((error) => {
       console.log(error)
@@ -54,15 +59,15 @@ const SignUp = () => {
           <div className="acc-modal">
             <h1>You Have Successfully Created an Account</h1>
             <img src={checked} alt="checked" />
-            <p>Kindly check your email for details</p>
+            {/* <p>Kindly check your email for details</p> */}
           </div>
-          <div className="b-btn">
+          {/* <div className="b-btn">
             <Button
               btnText="Back to Signin"
               clickHandler={toSigninPage}
               backIcon={true}
             />
-          </div>
+          </div> */}
         </Modal>
       )}
      {toggleLog ? (

@@ -26,8 +26,11 @@ const SignIn = () => {
     navigate(`/${HOME_ROUTE}`);
   };
 
-  const signInMsg = () => {
-    toast.success('PLEASE LOGIN WITH THE RIGTH INFORMATION OR SIGNUP')
+  function errorLogingInfo(){
+    toast.success('Please login with correct information')
+  }
+  function successMsg(){
+    toast.success('You are successfully logedin')
   }
 
   const handleSubmitSignin = (e) => {
@@ -36,8 +39,10 @@ const SignIn = () => {
     .then((userCredential) => {
       console.log(userCredential);
       if(!userCredential) {
-        signInMsg()
+        errorLogingInfo()
+        console.log(userCredential, 'login with your correct user info')
       } else {
+        successMsg()
         toHomePage()
       }
     })
@@ -46,6 +51,7 @@ const SignIn = () => {
     });
   };
 
+  
   return (
     <>
      {toggleLog ? (

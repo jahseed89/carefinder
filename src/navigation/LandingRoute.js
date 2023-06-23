@@ -38,7 +38,7 @@ const LandingRoute = () => {
     >
       <Routes>
         <Route element={<LandingLayout />}>
-          <Route index element={<Navigate to="login" />} />
+          <Route index element={<Navigate to="auth" />} />
           <Route path={LOGIN_ROUTE} element={<SignIn />} />
           <Route path={HOME_ROUTE} element={<Home />} />
           <Route path={ABOUT_ROUTE} element={<About />} />
