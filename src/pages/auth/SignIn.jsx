@@ -10,13 +10,13 @@ import Input from "../../components/input/Input";
 import SignUp from "./SignUp";
 import { auth } from '../../firebase';
 import { signInWithEmailAndPassword } from "firebase/auth";
-import toast from "react-hot-toast";
 import "./login.scss";
+import { toast } from "react-hot-toast";
 
 const SignIn = () => {
   const [passwordVisibility, setPasswordVisibility] = useState(true);
   const [email, setEmail] = useState("")
-  const [password, setPassword] = useState()
+  const [password, setPassword] = useState("")
   const [toggleLog, setToggleLog] = useState(true)
 
 
@@ -26,8 +26,8 @@ const SignIn = () => {
     navigate(`/${HOME_ROUTE}`);
   };
 
-  const loginMsg = () => {
-    toast.success("Login with a correct detials OR Signup")
+  const signInMsg = () => {
+    toast.success('PLEASE LOGIN WITH THE RIGTH INFORMATION OR SIGNUP')
   }
 
   const handleSubmitSignin = (e) => {
@@ -36,7 +36,7 @@ const SignIn = () => {
     .then((userCredential) => {
       console.log(userCredential);
       if(!userCredential) {
-        loginMsg()
+        signInMsg()
       } else {
         toHomePage()
       }
@@ -53,7 +53,7 @@ const SignIn = () => {
        <div className="login-form-container">
          <form onSubmit={handleSubmitSignin}>
            <h1>Welcome Back</h1>
-           <p>Login using correct details!</p>
+           <p>Login with correct details!</p>
            <div className="input-container">
              <div>
                <label>Email Address</label>
@@ -78,7 +78,6 @@ const SignIn = () => {
                  btnText="Login"
                  className="login-btn"
                  type="submit"
-                //  clickHandler={toHomePage}
                />
              </div>
              <div className="other-login">

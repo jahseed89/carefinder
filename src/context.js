@@ -2,7 +2,7 @@ import React from 'react'
 
 const HospitalDataContext = React.createContext({
     loading: false,
-    hospitals: {},
+    hospitals: [],
     isAuthenticated: false,
     setIsAuthenticated: null
 })

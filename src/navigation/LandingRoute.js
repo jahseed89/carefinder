@@ -18,7 +18,7 @@ const SignIn = lazy(() => import("../pages/auth/SignIn"));
 
 const LandingRoute = () => {
   const [loading, setLoading] = useState(false);
-  const [hosiptals, setHospitals] = useState([]);
+  const [hospitals, setHospitals] = useState([]);
   const [isAuthenticated, setIsAuthenticated] = useState([]);
 
   useEffect(() => {
@@ -32,10 +32,9 @@ const LandingRoute = () => {
     };
     fetchData();
   }, []);
-
   return (
     <HospitalDataContext.Provider
-      value={{ loading, hosiptals, isAuthenticated, setIsAuthenticated }}
+      value={{ loading, hospitals, isAuthenticated, setIsAuthenticated}}
     >
       <Routes>
         <Route element={<LandingLayout />}>

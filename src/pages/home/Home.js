@@ -22,7 +22,6 @@ import "./home.scss";
 const Home = () => {
   const [searchHospital, setSearchHospital] = useState("");
   const { loading, hospitals } = useContext(HospitalDataContext);
-
   const loadHospital = hospitals || [];
 
   const filterHospitals = loadHospital.filter((value) => {
@@ -37,11 +36,11 @@ const Home = () => {
     return false;
   });
 
-  const [cardNumb, setHospCardNumb] = useState(0);
+  const [hospCardNum, setHospCardNumb] = useState(0);
 
   const cardPerPage = 4;
 
-  const cardVisited = cardNumb * cardPerPage;
+  const cardVisited = hospCardNum * cardPerPage;
 
   const hospitalList = filterHospitals.slice(
     cardVisited,
@@ -94,7 +93,6 @@ const Home = () => {
       ) : (
         <div className="findsearch">
           {hospitalList.map((data) => {
-            console.log(data, "data not showing");
             return (
               <HospitalCard
                 key={data.id}

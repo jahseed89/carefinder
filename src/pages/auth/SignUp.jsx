@@ -19,7 +19,7 @@ const SignUp = () => {
   const [passwordVisibility, setPasswordVisibility] = useState(true);
   const [openModal, setOpenModal] = useState(false);
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState();
+  const [password, setPassword] = useState("");
   const [toggleLog, setToggleLog] = useState(true)
 
   const navigate = useNavigate();

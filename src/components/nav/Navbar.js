@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../button/Button";
 import { useNavigate } from "react-router-dom";
 import { ABOUT_ROUTE, FINDER_ROUTE, HOME_ROUTE, LOGIN_ROUTE } from "../../content-management/Landing";
-import { signOut } from "firebase/auth";
-import { auth } from "../../firebase";
+// import { signOut } from "firebase/auth";
+// import { auth } from "../../firebase";
 import './navbar.scss'
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "../../firebase";
 
 const Navbar = () => {
+
+  const [authUser, setAuthUser] = useState(null)
 
   const navitagator = useNavigate()
 
@@ -28,14 +32,37 @@ const Navbar = () => {
       navigate(`/${FINDER_ROUTE}`);
     };
 
+    // const userSignOut = () => {
+    //   signOut(auth).then(() => {
+    //     console.log('You have successfully signed out')
+    //     toLoginPage()
+    //   }).catch((error) => {
+    //     console.log(error)
+    //   })
+    // }
+
+    useEffect(() => {
+      const listen = onAuthStateChanged(auth, (user) => {
+        if(user) {
+          setAuthUser(user)
+        } else {
+          setAuthUser(null)
+          
+        }
+      })
+      return () => {
+        listen()
+      }
+    }, [authUser])
+
     const userSignOut = () => {
       signOut(auth).then(() => {
-        console.log('You have successfully signed out')
+        console.log('Signout successfully')
         toLoginPage()
-      }).catch((error) => {
-        console.log(error)
-      })
+      }).catch(error => console.log(error))
     }
+
+
   return (
     <nav className="nav-bar">
       <h1>CareFinder</h1>
@@ -45,7 +72,6 @@ const Navbar = () => {
         <li onClick={toFinder}>Find Hospital</li>
         <span className="nav-btn-holder">
           <Button btnText="Signout" clickHandler={userSignOut} />
-          {/* <Button btnText="Signup" clickHandler={toLoginPage} /> */}
         </span>
       </ul>
     </nav>
