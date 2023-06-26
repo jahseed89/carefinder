@@ -2,11 +2,9 @@ import React, { useEffect, useState } from "react";
 import Button from "../button/Button";
 import { useNavigate } from "react-router-dom";
 import { ABOUT_ROUTE, FINDER_ROUTE, HOME_ROUTE, LOGIN_ROUTE } from "../../content-management/Landing";
-// import { signOut } from "firebase/auth";
-// import { auth } from "../../firebase";
-import './navbar.scss'
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../../firebase";
+import './navbar.scss'
 
 const Navbar = () => {
 
@@ -32,15 +30,6 @@ const Navbar = () => {
       navigate(`/${FINDER_ROUTE}`);
     };
 
-    // const userSignOut = () => {
-    //   signOut(auth).then(() => {
-    //     console.log('You have successfully signed out')
-    //     toLoginPage()
-    //   }).catch((error) => {
-    //     console.log(error)
-    //   })
-    // }
-
     useEffect(() => {
       const listen = onAuthStateChanged(auth, (user) => {
         if(user) {
@@ -57,7 +46,7 @@ const Navbar = () => {
 
     const userSignOut = () => {
       signOut(auth).then(() => {
-        console.log('Signout successfully')
+        console.log('Signedout successfully')
         toLoginPage()
       }).catch(error => console.log(error))
     }
