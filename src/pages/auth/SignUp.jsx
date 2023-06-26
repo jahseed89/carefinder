@@ -59,15 +59,7 @@ const SignUp = () => {
           <div className="acc-modal">
             <h1>You Have Successfully Created an Account</h1>
             <img src={checked} alt="checked" />
-            {/* <p>Kindly check your email for details</p> */}
           </div>
-          {/* <div className="b-btn">
-            <Button
-              btnText="Back to Signin"
-              clickHandler={toSigninPage}
-              backIcon={true}
-            />
-          </div> */}
         </Modal>
       )}
      {toggleLog ? (
