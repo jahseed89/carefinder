@@ -58,7 +58,7 @@ const Navbar = () => {
       <ul>
         <li onClick={toHomePage}>Home</li>
         <li onClick={toAboutPage}>About</li>
-        <li onClick={toFinder}>Find Hospital</li>
+        <li onClick={toFinder}>Find Doctor</li>
         <span className="nav-btn-holder">
           <Button btnText="Signout" clickHandler={userSignOut} />
         </span>
