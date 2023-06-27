@@ -20,8 +20,8 @@ import HospitalDataContext from "../../context";
 import "./home.scss";
 
 const Home = () => {
-  const [searchHospital, setSearchHospital] = useState("");
   const { loading, hospitals } = useContext(HospitalDataContext);
+  const [searchHospital, setSearchHospital] = useState("");
   const loadHospital = hospitals || [];
 
   const filterHospitals = loadHospital.filter((value) => {

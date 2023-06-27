@@ -19,7 +19,6 @@ const SignIn = lazy(() => import("../pages/auth/SignIn"));
 const LandingRoute = () => {
   const [loading, setLoading] = useState(false);
   const [hospitals, setHospitals] = useState([]);
-  const [isAuthenticated, setIsAuthenticated] = useState([]);
 
   useEffect(() => {
   const url = "https://api.reliancehmo.com/v3/providers";
@@ -34,7 +33,7 @@ const LandingRoute = () => {
   }, []);
   return (
     <HospitalDataContext.Provider
-      value={{ loading, hospitals, isAuthenticated, setIsAuthenticated}}
+      value={{ loading, hospitals}}
     >
       <Routes>
         <Route element={<LandingLayout />}>
