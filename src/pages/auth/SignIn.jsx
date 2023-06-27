@@ -36,22 +36,26 @@ const SignIn = () => {
 
   const toSignUpPage = () => {
     setToggleLog((prev) => !prev);
+    modalIsClose()
+
   };
 
   const handleSubmitSignin = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // console.log(userCredential);
+        console.log(userCredential);
         if (userCredential) {
           toHomePage();
         } else {
           modalIsOpen();
-          console.log('please sign in with correct credentials')
         }
       })
       .catch((error) => {
         console.log(error);
+        modalIsOpen();
+        console.log('not a user')
+
       });
   };
 
@@ -127,9 +131,9 @@ const SignIn = () => {
       )}
       {openModal && (
         <Modal closeModal={modalIsClose}>
-          <h2>
+          <h2 className="confirmation-modal">
             Pleas login with the correct credential or click{" "}
-            <span onClick={toSignUpPage}>here</span> to creact an account{" "}
+            <span className="here" onClick={toSignUpPage}> here</span> to creact an account{" "}
           </h2>
         </Modal>
       )}
