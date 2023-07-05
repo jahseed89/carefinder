@@ -47,7 +47,7 @@ const Finder = () => {
             />
           </div>
         </div>
-        <div className="booking-container">
+        <form className="booking-container">
           <Button btnText="Book An Appointment" className="booking-btn" />
           <Input type="text" placeholder="Address" />
           <Input type="text" placeholder="Hospital" />
@@ -56,9 +56,8 @@ const Finder = () => {
           <Input type="text" placeholder="Email" />
           <Input type="date" />
           <Input type="time" />
-
           <Button btnText="Book Appointment Now" className="booking-btn" />
-        </div>
+        </form>
       </div>
     </>
   );

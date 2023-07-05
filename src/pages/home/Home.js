@@ -17,12 +17,17 @@ import { GrSearch } from "react-icons/gr";
 import Input from "../../components/input/Input";
 import ReactPaginate from "react-paginate";
 import HospitalDataContext from "../../context";
+import { useNavigate } from 'react-router-dom';
+import { ABOUT_ROUTE } from '../../content-management/Landing';
 import "./home.scss";
+
 
 const Home = () => {
   const { loading, hospitals } = useContext(HospitalDataContext);
   const [searchHospital, setSearchHospital] = useState("");
   const loadHospital = hospitals || [];
+  
+  const navigator = useNavigate()
 
   const filterHospitals = loadHospital.filter((value) => {
     if (searchHospital === "") {
@@ -53,6 +58,10 @@ const Home = () => {
     setHospCardNumb(selected);
   };
 
+  const toAboutPage = () => {
+    navigator(`/${ABOUT_ROUTE}`)
+  }
+
   return (
     <div className="home">
       <Navbar />
@@ -64,7 +73,7 @@ const Home = () => {
           </p>
           <div className="get-start-container">
             <Button btnText="GET STARTED" />
-            <span>
+            <span onClick={toAboutPage}>
               Learn more <BsArrowRightShort />
             </span>
           </div>
