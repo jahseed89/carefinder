@@ -66,8 +66,8 @@ const SignUp = () => {
          <div className="login">
          <div className="login-form-container form2">
            <form onSubmit={handleSubmitSignup}>
-             <h1>Welcome Back</h1>
-             <p>Login using correct details!</p>
+             <h1>Create An Account</h1>
+             <p>Signup to for free!</p>
              <div className="input-container">
                <div>
                  <label>Enter Name</label>

@@ -282,10 +282,15 @@
 .confirmation-modal {
     text-align: center;
 
+    @media (max-width: 900px) {
+         line-height: 1.90rem;  
+         letter-spacing: 1.55px; 
+    }
+
     .here {
-        color: blue;
+        color: #08299B;
         font-style: italic;
-        cursor: pointer
+        cursor: pointer;
     }
 }
 

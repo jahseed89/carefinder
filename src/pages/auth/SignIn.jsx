@@ -65,7 +65,7 @@ const SignIn = () => {
         <div className="login">
           <div className="login-form-container">
             <form onSubmit={handleSubmitSignin}>
-              <h1>Welcome Back</h1>
+              <h1>Welcome to CareFinder</h1>
               <p>Login with correct details!</p>
               <div className="input-container">
                 <div>
