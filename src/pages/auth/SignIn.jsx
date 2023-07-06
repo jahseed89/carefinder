@@ -13,10 +13,14 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import Modal from "../../components/modal/Modal";
 import "./login.scss";
 
+
+
 const SignIn = () => {
   const [passwordVisibility, setPasswordVisibility] = useState(true);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [values, setValues] = useState({
+    email: "",
+    password: ""
+  })
   const [toggleLog, setToggleLog] = useState(true);
   const [openModal, setOpenModal] = useState(false);
 
@@ -26,10 +30,9 @@ const SignIn = () => {
     navigate(`/${HOME_ROUTE}`);
   };
 
-  const modalIsOpen = () => {
-    setOpenModal((prev) => !prev);
-  };
-
+  const modalIsOpen = () =>{
+    setOpenModal(prev => !prev)
+  }
   const modalIsClose = () => {
     setOpenModal();
   };
@@ -40,21 +43,21 @@ const SignIn = () => {
 
   };
 
+  const handleChange = (e) => {
+    setValues({...values, [e.target.name]: e.target.value})
+  }
+
   const handleSubmitSignin = (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
+    signInWithEmailAndPassword(auth, values.email, values.password)
       .then((userCredential) => {
         console.log(userCredential);
-        if (userCredential) {
-          toHomePage();
-        } else {
-          modalIsOpen();
-        }
+        userCredential ? toHomePage() : modalIsOpen()
       })
       .catch((error) => {
         console.log(error);
-        modalIsOpen();
-        console.log('not a user')
+        modalIsOpen()
+        console.log('not a user');
 
       });
   };
@@ -74,8 +77,9 @@ const SignIn = () => {
                   <Input
                     type="email"
                     placeholder="Enter Email Address"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    value={values.email}
+                    name="email"
+                    onChange={handleChange}
                   />
                 </div>
 
@@ -86,11 +90,12 @@ const SignIn = () => {
                     type={passwordVisibility ? "password" : "text"}
                     placeholder="Enter Password"
                     passwordIcon={true}
+                    name="password"
                     passwordIconHandler={() =>
                       setPasswordVisibility((prev) => !prev)
                     }
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    value={values.password}
+                    onChange={handleChange}
                   />
                 </div>
                 <div className="login-btn-wrapper">

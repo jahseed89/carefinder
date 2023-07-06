@@ -30,6 +30,8 @@ const Navbar = () => {
       navigate(`/${FINDER_ROUTE}`);
     };
 
+
+
     useEffect(() => {
       const listen = onAuthStateChanged(auth, (user) => {
         if(user) {
@@ -46,7 +48,6 @@ const Navbar = () => {
 
     const userSignOut = () => {
       signOut(auth).then(() => {
-        console.log('Signedout successfully')
         toLoginPage()
       }).catch(error => console.log(error))
     }

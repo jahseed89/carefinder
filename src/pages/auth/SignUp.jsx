@@ -7,61 +7,48 @@ import loginTreat from "../../assets/login-treatment.png";
 import { useNavigate } from "react-router-dom";
 import { HOME_ROUTE } from "../../content-management/Landing";
 import Input from "../../components/input/Input";
-import Modal from "../../components/modal/Modal";
-import checked from "../../assets/checked.png";
 import { IoIosEyeOff } from "react-icons/io";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import SignIn from "./SignIn";
 import "./login.scss";
-import { toast } from "react-hot-toast";
+import Validation from "../../components/validation/Validation";
 
 const SignUp = () => {
   const [passwordVisibility, setPasswordVisibility] = useState(true);
-  const [openModal, setOpenModal] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [values, setValues] = useState({
+    name: '',
+    email: '',
+    password: ''
+  })
+  const [errorMsgs, setErrorMsgs] = useState({})
   const [toggleLog, setToggleLog] = useState(true)
 
   const navigate = useNavigate();
 
   const toHomePage = () => {
-    setOpenModal()
     navigate(`/${HOME_ROUTE}`);
   };
 
-
-  // const approvalModal = () => {
-  //   setOpenModal((prev) => !prev);
-  //   setToggleLog(false)
-  // };
-  const accCreateMsg = () => {
-    toast.success('you have successfully created an acc')
+  const handleChange = (e) => {
+    setValues({...values, [e.target.name]: e.target.value})
   }
 
   const handleSubmitSignup = (e) => {
     e.preventDefault();
-    createUserWithEmailAndPassword(auth, email, password)
+    createUserWithEmailAndPassword(auth, values.email, values.password)
     .then((userCredential) => {
       console.log(userCredential);
-      accCreateMsg()
       toHomePage()
     })
     .catch((error) => {
+      setErrorMsgs(Validation(values))
       console.log(error)
     });
   };
 
   return (
     <>
-      {openModal && (
-        <Modal closeModal={() => setOpenModal()}>
-          <div className="acc-modal">
-            <h1>You Have Successfully Created an Account</h1>
-            <img src={checked} alt="checked" />
-          </div>
-        </Modal>
-      )}
      {toggleLog ? (
          <div className="login">
          <div className="login-form-container form2">
@@ -72,7 +59,8 @@ const SignUp = () => {
                <div>
                  <label>Enter Name</label>
                  <br />
-                 <Input type="text" placeholder="Enter Name" />
+                 <Input type="text" placeholder="Enter Name" name='name' onChange={handleChange} value={values.name} />
+                 {errorMsgs.name && <span className="error-msg">{errorMsgs.name}</span>}
                </div>
  
                <div>
@@ -81,9 +69,11 @@ const SignUp = () => {
                  <Input
                    type="email"
                    placeholder="Enter Email Address"
-                   value={email}
-                   onChange={(e) => setEmail(e.target.value)}
+                   value={values.email}
+                   name='email'
+                   onChange={handleChange}
                  />
+                 {errorMsgs.email && <span className="error-msg">{errorMsgs.email}</span>}
                </div>
  
                <div>
@@ -94,13 +84,15 @@ const SignUp = () => {
                    type={passwordVisibility ? "password" : "text"}
                    placeholder="Enter Password"
                    className="create-pass-input"
-                   value={password}
-                   onChange={(e) => setPassword(e.target.value)}
+                   value={values.password}
+                   name='password'
+                   onChange={handleChange}
                  />
                  <IoIosEyeOff
                    className="pass-viewIcon"
                    onClick={() => setPasswordVisibility((prev) => !prev)}
                  />
+                 {errorMsgs.password && <span className="error-msg">{errorMsgs.password}</span>}
                </div>
  
                <div className="login-btn-wrapper">

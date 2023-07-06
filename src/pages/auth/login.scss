@@ -119,19 +119,26 @@
                     .pass-viewIcon {
                         position: absolute;
                         bottom: 21.8rem;
+                        top: 27rem;
                         left: 38rem;
                         cursor: pointer;
 
                         @media (max-width: 900px) {
-                            bottom: 0;
-                            top: 65.8rem;
-                            left: 37.5rem;
+                            top: 62.7rem;
+                            left: 35rem;
+                            
                         }
-
+                    
                         @media (max-width: 500px) {
-                            bottom: 0;
-                            top: 52.4rem;
-                            left: 17.5rem;
+                            top: 50.8rem;
+                            left: 18rem;
+                            
+                        }
+                    
+                        @media (max-width: 365px) {
+                            top: 49rem;
+                            left: 15rem;
+                            
                         }
                     }
                 }
@@ -189,6 +196,13 @@
                     }
                 }
                 
+            }
+
+            .error-msg {
+                font-size: 15px;
+                display: block;
+                color: red;
+                // position: fixed;
             }
 
             .other-login {
