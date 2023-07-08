@@ -17,17 +17,17 @@ import { GrSearch } from "react-icons/gr";
 import Input from "../../components/input/Input";
 import ReactPaginate from "react-paginate";
 import HospitalDataContext from "../../context";
-import { useNavigate } from 'react-router-dom';
-import { ABOUT_ROUTE } from '../../content-management/Landing';
+import { useNavigate } from "react-router-dom";
+import { ABOUT_ROUTE } from "../../content-management/Landing";
+import { CSVLink } from "react-csv";
 import "./home.scss";
-
 
 const Home = () => {
   const { loading, hospitals } = useContext(HospitalDataContext);
   const [searchHospital, setSearchHospital] = useState("");
   const loadHospital = hospitals || [];
-  
-  const navigator = useNavigate()
+
+  const navigator = useNavigate();
 
   const filterHospitals = loadHospital.filter((value) => {
     if (searchHospital === "") {
@@ -59,8 +59,8 @@ const Home = () => {
   };
 
   const toAboutPage = () => {
-    navigator(`/${ABOUT_ROUTE}`)
-  }
+    navigator(`/${ABOUT_ROUTE}`);
+  };
 
   return (
     <div className="home">
@@ -101,15 +101,24 @@ const Home = () => {
         </div>
       ) : (
         <div className="findsearch">
-          {hospitalList.map((data) => {
+          {hospitalList.map((data, index) => {
             return (
-             <div key={data.id} className="hosp-card-wrapper">
-               <HospitalCard
-                name={data.name}
-                address={data.address}
-                location={data.state.name}
-              />
-             </div>
+              <div key={data.id} className="hosp-card-wrapper">
+                <HospitalCard
+                  name={data.name}
+                  address={data.address}
+                  location={data.state.name}
+                  index={index}
+                  csv={
+                    <CSVLink
+                      data={[data]}
+                      headers={["name", "address", "state"]}
+                    >
+                      Export Hospitals to CVS
+                    </CSVLink>
+                  }
+                />
+              </div>
             );
           })}
         </div>
