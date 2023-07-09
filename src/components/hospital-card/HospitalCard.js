@@ -1,7 +1,7 @@
 
 import "./hospitalCard.scss";
 
-const HospitalCard = ({ name, address, location, csv, index }) => {
+const HospitalCard = ({ name, address, location, }) => {
 
   return (
     <>
@@ -9,8 +9,6 @@ const HospitalCard = ({ name, address, location, csv, index }) => {
         <h1>{name}</h1>
         <p>{address}</p>
         <h3>{location}</h3>
-        <h1 className="csv">{csv}</h1>
-        <p className="index">{index}</p>
       </div>
       
     </>

@@ -12,6 +12,7 @@ import { auth } from "../../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import Modal from "../../components/modal/Modal";
 import "./login.scss";
+import { Toaster, toast } from "react-hot-toast";
 
 
 
@@ -47,23 +48,40 @@ const SignIn = () => {
     setValues({...values, [e.target.name]: e.target.value})
   }
 
+  const successMsg = ()=>{
+    toast('YOU ARE SUCCESSFULLY LOGEDIN', {
+      position: "top-center",
+      auth: '5000',
+      style: {
+        background: '#00000',
+        color: '#fffff'
+      }
+    })
+    
+  }
+
   const handleSubmitSignin = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, values.email, values.password)
       .then((userCredential) => {
         console.log(userCredential);
-        userCredential ? toHomePage() : modalIsOpen()
+        if(userCredential) {
+          toHomePage()
+          successMsg()
+        }
+       
+
       })
       .catch((error) => {
         console.log(error);
         modalIsOpen()
-        console.log('not a user');
 
       });
   };
 
   return (
     <>
+    <Toaster />
       {toggleLog ? (
         <div className="login">
           <div className="login-form-container">

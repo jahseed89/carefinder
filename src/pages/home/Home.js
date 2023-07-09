@@ -101,28 +101,26 @@ const Home = () => {
         </div>
       ) : (
         <div className="findsearch">
-          {hospitalList.map((data, index) => {
+          {hospitalList.map((data) => {
             return (
               <div key={data.id} className="hosp-card-wrapper">
                 <HospitalCard
                   name={data.name}
                   address={data.address}
                   location={data.state.name}
-                  index={index}
-                  csv={
-                    <CSVLink
-                      data={[{name: data.name, address: data.address, state: data.state.name}]}
-                      headers={["name", "address", "state"]}
-                    >
-                      Export Hospitals to CVS
-                    </CSVLink>
-                  }
                 />
               </div>
             );
           })}
         </div>
       )}
+      <h1 className="csv">
+        <CSVLink data={hospitalList.map((data) => {
+          return{name: data.name, address: data.address, state: data.name.state}
+        })} headers={["name", "address", "state"]}>
+          Export Hospitals to CSV
+        </CSVLink>
+      </h1>
       <div className="pagination-container">
         <ReactPaginate
           previousLabel={"<<"}
