@@ -111,7 +111,7 @@ const Home = () => {
                   index={index}
                   csv={
                     <CSVLink
-                      data={[data]}
+                      data={[{name: data.name, address: data.address, state: data.state.name}]}
                       headers={["name", "address", "state"]}
                     >
                       Export Hospitals to CVS
