@@ -27,7 +27,9 @@ const LandingRoute = () => {
       setLoading(true);
       const resp = await axios.get(url);
       setHospitals(resp.data.data);
-      setLoading(false);
+      setTimeout(() =>{
+        setLoading(false)
+      }, 5000)
     };
     fetchData();
   }, []);

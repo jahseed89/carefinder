@@ -92,7 +92,7 @@ const Home = () => {
             value={searchHospital}
             onChange={(e) => setSearchHospital(e.target.value)}
           />
-          <GrSearch className="search-icon" />
+          <GrSearch type="submit" className="search-icon" />
         </div>
       </form>
       {loading ? (
