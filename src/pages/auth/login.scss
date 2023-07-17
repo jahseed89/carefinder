@@ -50,8 +50,8 @@
 
     h1,h2 {
         font-weight: 700;
-        font-size: 45px;
-        line-height: 135%;
+        font-size: 40px;
+        line-height: 125%;
        
         @media (max-width: 900px) {
             font-size: 20px;
@@ -60,7 +60,7 @@
     }
 
     p {
-        font-size: 24px;
+        font-size: 22px;
 
         @media (max-width: 900px) {
             font-size: 16px;
@@ -148,7 +148,7 @@
                 input {
                     width: 100%;
                     margin: .5rem 0;
-                    height: 58px;
+                    height: 50px;
                     background: #E0E4EC;
                     border-radius: 12px;
                     padding: 0 .5rem;
@@ -190,7 +190,7 @@
                         cursor: pointer;
                         font-style: normal;
                         font-weight: 500;
-                        font-size: 22px;
+                        font-size: 18px;
                         line-height: 150%;
                         letter-spacing: -0.011em;
                     }

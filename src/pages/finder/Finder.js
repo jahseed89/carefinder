@@ -4,11 +4,13 @@ import DocsAvatar from "../../components/docs-avatar/DocsAvatar";
 import {doc1, doc2, doc3, doc4} from '../../assets/index'
 import Input from "../../components/input/Input";
 import "./finder.scss";
+import Navbar from "../../components/nav/Navbar";
 
 
 const Finder = () => {
   return (
     <>
+    <Navbar />
       <div className="finder">
         <div className="qualified-docs-container">
           <h1 className="title-qualified">QUALIFIED DOCTORS</h1>

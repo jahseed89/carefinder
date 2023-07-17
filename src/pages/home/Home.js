@@ -24,6 +24,7 @@ import { useNavigate } from "react-router-dom";
 import { ABOUT_ROUTE } from "../../content-management/Landing";
 import { CSVLink } from "react-csv";
 import "./home.scss";
+import Navbar from '../../components/nav/Navbar';
 
 const Home = () => {
   const { loading, hospitals } = useContext(HospitalDataContext);
@@ -34,14 +35,13 @@ const Home = () => {
 
   const filterHospitals = loadHospital.filter((value) => {
     if (searchHospital === "") {
-      return value;
-    } else if (
-      value.name.includes(searchHospital.toLocaleLowerCase()) ||
-      value.state.name.includes(searchHospital.toLocaleLowerCase())
-    ) {
-      return value;
+      return true;
+    } else {
+      const searchValue = searchHospital.toLowerCase().trim();
+      const nameMatch = value.name.toLowerCase().includes(searchValue);
+      const stateMatch = value.state.name.toLowerCase().includes(searchValue);
+      return nameMatch || stateMatch;
     }
-    return false;
   });
 
   const [hospCardNum, setHospCardNumb] = useState(0);
@@ -67,6 +67,7 @@ const Home = () => {
 
   return (
     <div className="home">
+      <Navbar />
       <div className="main-section">
         <div className="description">
           <h2>Find the nearest hospital to you and make an appointment</h2>

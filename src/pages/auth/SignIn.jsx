@@ -49,7 +49,7 @@ const SignIn = () => {
   }
 
   const successMsg = ()=>{
-    toast('YOU ARE SUCCESSFULLY LOGEDIN', {
+    toast('YOU ARE SUCCESSFULLY LOGED IN', {
       position: "top-center",
       auth: '5000',
       style: {
