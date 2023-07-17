@@ -2,14 +2,17 @@ import React, { useContext, useState } from "react";
 import Button from "../../components/button/Button";
 import treatment from "../../assets/treatment.png";
 import { BsArrowRightShort } from "react-icons/bs";
-import rectangle7 from "../../assets/Rectangle7.png";
-import rectangle8 from "../../assets/Rectangle8.png";
 import DocsCard from "../../components/docs-card/DocsCard";
-import vector5 from "../../assets/vector5.svg";
-import vector6 from "../../assets/vector6.svg";
-import vector7 from "../../assets/vector7.svg";
-import vector8 from "../../assets/vector8.svg";
-import Navbar from "../../components/nav/Navbar";
+
+import {
+  rectangle7,
+  rectangle8,
+  vector5,
+  vector6,
+  vector7,
+  vector8,
+} from "../../assets/index";
+
 import Footer from "../../components/footer/Footer";
 import BrandLoader from "../../components/brand-loader/BrandLoader";
 import HospitalCard from "../../components/hospital-card/HospitalCard";
@@ -33,8 +36,8 @@ const Home = () => {
     if (searchHospital === "") {
       return value;
     } else if (
-      value.name.includes(searchHospital) ||
-      value.state.name.includes(searchHospital)
+      value.name.includes(searchHospital.toLocaleLowerCase()) ||
+      value.state.name.includes(searchHospital.toLocaleLowerCase())
     ) {
       return value;
     }
@@ -64,7 +67,6 @@ const Home = () => {
 
   return (
     <div className="home">
-      <Navbar />
       <div className="main-section">
         <div className="description">
           <h2>Find the nearest hospital to you and make an appointment</h2>
@@ -115,9 +117,16 @@ const Home = () => {
         </div>
       )}
       <h1 className="csv">
-        <CSVLink data={hospitalList.map((data) => {
-          return{name: data.name, address: data.address, state: data.name.state}
-        })} headers={["name", "address", "state"]}>
+        <CSVLink
+          data={hospitalList.map((data) => {
+            return {
+              name: data.name,
+              address: data.address,
+              state: data.name.state,
+            };
+          })}
+          headers={["name", "address", "state"]}
+        >
           Export Hospitals to CSV
         </CSVLink>
       </h1>

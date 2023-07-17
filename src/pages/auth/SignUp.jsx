@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import Button from "../../components/button/Button";
-import google from "../../assets/google.svg";
-import apple from "../../assets/apple-cloud.svg";
-import facebook from "../../assets/facebook.svg";
-import loginTreat from "../../assets/login-treatment.png";
+import {google, apple, facebook, loginTreat} from '../../assets/index'
 import { useNavigate } from "react-router-dom";
 import { HOME_ROUTE } from "../../content-management/Landing";
 import Input from "../../components/input/Input";

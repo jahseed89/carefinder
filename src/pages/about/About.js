@@ -1,5 +1,4 @@
-import Navbar from "../../components/nav/Navbar";
-import hospBook from "../../assets/hospital-book.png";
+import {hospBook} from "../../assets/index";
 import "./about.scss";
 import { useContext, useState } from "react";
 import HospitalDataContext from "../../context";
@@ -45,7 +44,6 @@ const About = () => {
 
   return (
     <div className="about">
-      <Navbar />
       <header>Somkenechukwu Hospital and maternity Ikem II, Isi-Uzo</header>
       <p className="home-hospitals">
         Home » Hospitals in Nigeria » 7,117+ Family Planning Hospitals In

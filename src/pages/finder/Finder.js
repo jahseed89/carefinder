@@ -1,19 +1,14 @@
 import React from "react";
 import Button from "../../components/button/Button";
 import DocsAvatar from "../../components/docs-avatar/DocsAvatar";
-import doc1 from "../../assets/ellipse1.png";
-import doc2 from "../../assets/ellipse2.png";
-import doc3 from "../../assets/ellipse3.png";
-import doc4 from "../../assets/ellipse4.png";
-import Navbar from "../../components/nav/Navbar";
-import "./finder.scss";
+import {doc1, doc2, doc3, doc4} from '../../assets/index'
 import Input from "../../components/input/Input";
+import "./finder.scss";
 
 
 const Finder = () => {
   return (
     <>
-      <Navbar />
       <div className="finder">
         <div className="qualified-docs-container">
           <h1 className="title-qualified">QUALIFIED DOCTORS</h1>
