@@ -309,6 +309,17 @@
     }
 }
 
+.errorLog-container {
+    width: 90%;
+    margin: 1rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        width: 30%;
+    }
+}
 
 
 // *********** <Midea queries ****************

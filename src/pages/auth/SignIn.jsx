@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {Button , Modal, Input}from "../../components/index";
-import {google, apple, facebook, loginTreat} from "../../assets/index";
+import {google, apple, facebook, loginTreat, logins} from "../../assets/index";
 import { useNavigate } from "react-router-dom";
 import { HOME_ROUTE } from "../../content-management/Landing";
 import SignUp from "./SignUp";
@@ -151,6 +151,9 @@ const SignIn = () => {
             Pleas login with the correct credential or click{" "}
             <span className="here" onClick={toSignUpPage}> here</span> to creact an account{" "}
           </h2>
+          <div className="errorLog-container">
+            <img src={logins} alt="invalid" className="error-log" />
+          </div>
         </Modal>
       )}
     </>
