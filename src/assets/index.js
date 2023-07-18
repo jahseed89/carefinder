@@ -13,6 +13,8 @@ import doc2 from './ellipse2.png'
 import doc3 from './ellipse3.png'
 import doc4 from './ellipse4.png'
 import hospBook from './hospital-book.png'
+import treatment from './treatment.png'
+import error404 from './error404.jpeg'
 
 export {
     rectangle7,
@@ -29,5 +31,7 @@ export {
     doc2,
     doc3,
     doc4,
-    hospBook
+    hospBook,
+    treatment,
+    error404
 }

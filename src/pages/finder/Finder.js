@@ -1,10 +1,7 @@
 import React from "react";
-import Button from "../../components/button/Button";
-import DocsAvatar from "../../components/docs-avatar/DocsAvatar";
+import {Button, DocsAvatar, Input, Navbar} from "../../components/index";
 import {doc1, doc2, doc3, doc4} from '../../assets/index'
-import Input from "../../components/input/Input";
 import "./finder.scss";
-import Navbar from "../../components/nav/Navbar";
 
 
 const Finder = () => {

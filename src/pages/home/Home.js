@@ -1,9 +1,6 @@
 import React, { useContext, useState } from "react";
-import Button from "../../components/button/Button";
-import treatment from "../../assets/treatment.png";
 import { BsArrowRightShort } from "react-icons/bs";
-import DocsCard from "../../components/docs-card/DocsCard";
-
+import { Button, DocsCard } from "../../components/index";
 import {
   rectangle7,
   rectangle8,
@@ -11,20 +8,18 @@ import {
   vector6,
   vector7,
   vector8,
+  treatment,
 } from "../../assets/index";
 
-import Footer from "../../components/footer/Footer";
-import BrandLoader from "../../components/brand-loader/BrandLoader";
+import { BrandLoader, Footer, Input, Navbar } from "../../components/index";
 import HospitalCard from "../../components/hospital-card/HospitalCard";
 import { GrSearch } from "react-icons/gr";
-import Input from "../../components/input/Input";
 import ReactPaginate from "react-paginate";
 import HospitalDataContext from "../../context";
 import { useNavigate } from "react-router-dom";
 import { ABOUT_ROUTE } from "../../content-management/Landing";
 import { CSVLink } from "react-csv";
 import "./home.scss";
-import Navbar from '../../components/nav/Navbar';
 
 const Home = () => {
   const { loading, hospitals } = useContext(HospitalDataContext);
@@ -111,6 +106,7 @@ const Home = () => {
                   name={data.name}
                   address={data.address}
                   location={data.state.name}
+                  locateHospital={data.address}
                 />
               </div>
             );

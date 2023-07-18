@@ -150,7 +150,6 @@
     .csv {
         text-align: center;
         padding: 1rem 0;
-        margin-top: 1.5rem;
 
         a {
             color: #08299B;
@@ -170,7 +169,7 @@
         .pagination-btn {
             width: 80%;
             margin: 0 auto;
-            height: 15px;
+            height: 10px;
             list-style: none;
             display: flex;
             justify-content: center;
@@ -189,6 +188,7 @@
                 border: 1px solid #08299B; 
                 color: #08299B;
                 cursor: pointer;
+                font-size: 14px;
     
                 @media (max-width: 900px) {
                     font-size: 10px;

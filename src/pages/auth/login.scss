@@ -118,9 +118,9 @@
 
                     .pass-viewIcon {
                         position: absolute;
-                        bottom: 21.8rem;
-                        top: 27rem;
-                        left: 38rem;
+                        display: inline-block;
+                        top: 25.5rem;
+                        left: 30rem;
                         cursor: pointer;
 
                         @media (max-width: 900px) {

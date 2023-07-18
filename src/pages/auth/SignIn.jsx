@@ -1,20 +1,13 @@
 import React, { useState } from "react";
-import Button from "../../components/button/Button";
-import google from "../../assets/google.svg";
-import apple from "../../assets/apple-cloud.svg";
-import facebook from "../../assets/facebook.svg";
-import loginTreat from "../../assets/login-treatment.png";
+import {Button , Modal, Input}from "../../components/index";
+import {google, apple, facebook, loginTreat} from "../../assets/index";
 import { useNavigate } from "react-router-dom";
 import { HOME_ROUTE } from "../../content-management/Landing";
-import Input from "../../components/input/Input";
 import SignUp from "./SignUp";
 import { auth } from "../../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import Modal from "../../components/modal/Modal";
-import "./login.scss";
 import { Toaster, toast } from "react-hot-toast";
-
-
+import "./login.scss";
 
 const SignIn = () => {
   const [passwordVisibility, setPasswordVisibility] = useState(true);

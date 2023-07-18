@@ -1,12 +1,15 @@
 import { hospBook } from "../../assets/index";
-import "./about.scss";
 import { useContext, useState } from "react";
 import HospitalDataContext from "../../context";
-import Input from "../../components/input/Input";
-import BrandLoader from "../../components/brand-loader/BrandLoader";
-import HospitalCard from "../../components/hospital-card/HospitalCard";
+import {
+  Input,
+  BrandLoader,
+  HospitalCard,
+  Navbar,
+} from "../../components/index";
 import ReactPaginate from "react-paginate";
-import Navbar from "../../components/nav/Navbar";
+import { CSVLink } from "react-csv";
+import "./about.scss";
 
 const About = () => {
   const { loading, hospitals } = useContext(HospitalDataContext);
@@ -120,6 +123,20 @@ const About = () => {
             })}
           </div>
         )}
+        <h1 className="csv">
+          <CSVLink
+            data={hospitalList.map((data) => {
+              return {
+                name: data.name,
+                address: data.address,
+                state: data.name.state,
+              };
+            })}
+            headers={["name", "address", "state"]}
+          >
+            Export Hospitals to CSV
+          </CSVLink>
+        </h1>
         <div className="pagination-container">
           <ReactPaginate
             previousLabel={"<<"}

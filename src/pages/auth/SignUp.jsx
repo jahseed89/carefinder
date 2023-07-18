@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import Button from "../../components/button/Button";
+import {Button, Input,} from "../../components/index";
 import {google, apple, facebook, loginTreat} from '../../assets/index'
 import { useNavigate } from "react-router-dom";
 import { HOME_ROUTE } from "../../content-management/Landing";
-import Input from "../../components/input/Input";
 import { IoIosEyeOff } from "react-icons/io";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
