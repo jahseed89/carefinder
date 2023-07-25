@@ -128,12 +128,20 @@
                             left: 35rem;
                             
                         }
-                    
+
+                        @media (max-width: 600px) {
+                            top: 50.8rem;
+                            left: 18rem;
+                            
+                        }
+
                         @media (max-width: 500px) {
                             top: 48.5rem;
                             left: 17rem;
                             
                         }
+                    
+                     
                     
                         @media (max-width: 365px) {
                             top: 49rem;
