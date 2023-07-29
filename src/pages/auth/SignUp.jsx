@@ -7,6 +7,7 @@ import { IoIosEyeOff } from "react-icons/io";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import SignIn from "./SignIn";
+import { Toaster, toast } from "react-hot-toast";
 import "./login.scss";
 import Validation from "../../components/validation/Validation";
 
@@ -35,7 +36,11 @@ const SignUp = () => {
     createUserWithEmailAndPassword(auth, values.email, values.password)
     .then((userCredential) => {
       console.log(userCredential);
-      toHomePage()
+      successMsg()
+      setTimeout(() => {
+        toHomePage()
+      }, 5000)
+     
     })
     .catch((error) => {
       setErrorMsgs(Validation(values))
@@ -43,8 +48,21 @@ const SignUp = () => {
     });
   };
 
+  const successMsg = ()=>{
+    toast('YOU ARE SUCCESSFULLY LOGED IN', {
+      position: "top-center",
+      auth: '5000',
+      style: {
+        background: '#00000',
+        color: '#fffff'
+      }
+    })
+    
+  }
+
   return (
     <>
+    <Toaster />
      {toggleLog ? (
          <div className="login">
          <div className="login-form-container form2">

@@ -50,7 +50,6 @@ const SignIn = () => {
         color: '#fffff'
       }
     })
-    
   }
 
   const handleSubmitSignin = (e) => {
@@ -59,11 +58,11 @@ const SignIn = () => {
       .then((userCredential) => {
         console.log(userCredential);
         if(userCredential) {
-          toHomePage()
           successMsg()
+          setTimeout(() => {
+            toHomePage()
+          }, 5000)
         }
-       
-
       })
       .catch((error) => {
         console.log(error);
