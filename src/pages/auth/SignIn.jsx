@@ -58,9 +58,9 @@ const SignIn = () => {
       .then((userCredential) => {
         console.log(userCredential);
         if(userCredential) {
-          successMsg()
+          toHomePage()
           setTimeout(() => {
-            toHomePage()
+            successMsg()
           }, 5000)
         }
       })

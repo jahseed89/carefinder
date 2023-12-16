@@ -17,7 +17,7 @@ import { GrSearch } from "react-icons/gr";
 import ReactPaginate from "react-paginate";
 import HospitalDataContext from "../../context";
 import { useNavigate } from "react-router-dom";
-import { ABOUT_ROUTE } from "../../content-management/Landing";
+import { ABOUT_ROUTE, HOSPITALS_ROUTE } from "../../content-management/Landing";
 import { CSVLink } from "react-csv";
 import "./home.scss";
 
@@ -25,8 +25,6 @@ const Home = () => {
   const { loading, hospitals } = useContext(HospitalDataContext);
   const [searchHospital, setSearchHospital] = useState("");
   const loadHospital = hospitals || [];
-
-  const navigator = useNavigate();
 
   const filterHospitals = loadHospital.filter((value) => {
     if (searchHospital === "") {
@@ -56,9 +54,16 @@ const Home = () => {
     setHospCardNumb(selected);
   };
 
+  const navigator = useNavigate();
+
+  const toHospitalList = () => {
+    navigator(`/${HOSPITALS_ROUTE}`)
+  }
+
   const toAboutPage = () => {
     navigator(`/${ABOUT_ROUTE}`);
   };
+
 
   return (
     <div className="home">
@@ -70,7 +75,7 @@ const Home = () => {
             Discover Your Perfect Care: Find Your Hospital, Anytime, Anywhere!
           </p>
           <div className="get-start-container">
-            <Button btnText="GET STARTED" />
+            <Button btnText="GET STARTED" clickHandler={toHospitalList} />
             <span onClick={toAboutPage}>
               Learn more <BsArrowRightShort />
             </span>

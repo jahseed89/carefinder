@@ -1,0 +1,41 @@
+.hospital-list {
+    border: 1px solid red;
+    width: 95%;
+    margin: 0 auto;
+
+    form {
+        width: 90%;
+        text-align: center;
+        margin: 0 auto;
+
+        img {
+            width: 30%;
+            margin-top: -3rem;
+        }
+
+        input {
+            width: 100%;
+            margin: 1rem auto;
+            padding: .8rem .5rem;
+        }
+    }
+
+    .list-container {
+
+        .details-wrapper {
+            display: flex;
+            justify-content: space-between;
+
+            pre {
+                width: 80%;
+            }
+
+            .add-section {
+                width: 10%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+    }
+}

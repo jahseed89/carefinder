@@ -16,19 +16,21 @@ const Navbar = () => {
     navitagator(`/${LOGIN_ROUTE}`)
   }
 
-    const navigate = useNavigate();
-
     const toHomePage = () => {
-        navigate(`/${HOME_ROUTE}`)
+      navitagator(`/${HOME_ROUTE}`)
     }
 
     const toAboutPage = () => {
-      navigate(`/${ABOUT_ROUTE}`);
+      navitagator(`/${ABOUT_ROUTE}`);
     };
   
     const toFinder = () => {
-      navigate(`/${FINDER_ROUTE}`);
+      navitagator(`/${FINDER_ROUTE}`);
     };
+
+    // const toLibrary = () => {
+    //   navitagator(`/${HOSPITALS_ROUTE}`)
+    // }
 
 
 
@@ -58,8 +60,10 @@ const Navbar = () => {
       <h1>CareFinder</h1>
       <ul>
         <li onClick={toHomePage}>Home</li>
-        <li onClick={toAboutPage}>About</li>
+        {/* <li onClick={toLibrary}>Library</li> */}
         <li onClick={toFinder}>Find Doctor</li>
+        <li>Hospitals</li>
+        <li onClick={toAboutPage}>About</li>
         <span className="nav-btn-holder">
           <Button btnText="Signout" clickHandler={userSignOut} />
         </span>

@@ -22,6 +22,7 @@
         @media (max-width: 900px) {
             font-weight: 400;
             font-size: 20px !important;
+            display: none;
         }
     }
 
@@ -32,7 +33,7 @@
         align-items: center;
 
         @media (max-width: 900px) {
-            width: 80% !important;
+            width: 100% !important;
             gap: .2rem;
         }
 

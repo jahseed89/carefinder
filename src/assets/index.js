@@ -16,6 +16,7 @@ import hospBook from './hospital-book.png'
 import treatment from './treatment.png'
 import error404 from './error404.jpeg'
 import logins from './logins.jpeg'
+import hospitalIcon from './hospital_icon.svg'
 
 export {
     rectangle7,
@@ -35,5 +36,6 @@ export {
     hospBook,
     treatment,
     error404,
-    logins
+    logins,
+    hospitalIcon
 }

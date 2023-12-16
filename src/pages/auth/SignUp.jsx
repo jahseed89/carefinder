@@ -36,11 +36,11 @@ const SignUp = () => {
     createUserWithEmailAndPassword(auth, values.email, values.password)
     .then((userCredential) => {
       console.log(userCredential);
-      successMsg()
+      
+      toHomePage()
       setTimeout(() => {
-        toHomePage()
+        successMsg()
       }, 5000)
-     
     })
     .catch((error) => {
       setErrorMsgs(Validation(values))
